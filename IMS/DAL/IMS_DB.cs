@@ -16,6 +16,7 @@ namespace IMS.DAL
         }
 
         public DbSet<Admin> admin { get; set; }
+        public DbSet<Customer> Customers { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

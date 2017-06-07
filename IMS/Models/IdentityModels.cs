@@ -13,5 +13,7 @@ namespace IMS.Models
             : base("DefaultConnection")
         {
         }
+
+        public System.Data.Entity.DbSet<IMS.Models.Customer> Customers { get; set; }
     }
 }
