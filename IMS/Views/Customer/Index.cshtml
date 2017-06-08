@@ -2,44 +2,93 @@
 
 @{
     ViewBag.Title = "Index";
+    var customer = new IMS.Models.Customer();
 }
+<style>
+    td {
+        text-align: center;
+        vertical-align: middle;
+    }
+</style>
+        <div class="row-fluid">
+            <div class="span12" style="padding-right: 80px;">
+                <div class="widget-box">
+                    <div class="widget-title">
+                        <span class="icon"> <i class="icon-th"></i> </span>
+                        <h5>Customers</h5>
+                    </div>
+                    <div class="widget-content nopadding">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <td>
+                                        #
+                                    </td>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.CustomerName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.CustomerAddress)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.CustomerContact)
+                                    </th>
+                                    <th>
+                                        Actions
+                                    </th>
+                                </tr>
+                            </thead>
 
-<h2>Index</h2>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CustomerId)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CustomerName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CustomerAddress)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CustomerContact)
+                                        </td>
+                                        <td>
+                                            <button data-toggle="modal" data-target="#myModal6"><i style="; color: blue; " class="fa fa-2x fa-edit"></i>EDIT</button>
+                                            <a href="@Url.Action("Delete", "Customer", new { id = item.CustomerId })" data-modal=""><i style="color: red;" class="fa fa-2x fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CustomerName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CustomerAddress)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CustomerContact)
-        </th>
-        <th></th>
-    </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CustomerName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CustomerAddress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CustomerContact)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CustomerId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CustomerId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CustomerId })
-        </td>
-    </tr>
-}
 
-</table>
+<div class="modal fade" id="myModal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel6">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            @{
+                Html.RenderPartial("Create", customer);
+            }
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+   

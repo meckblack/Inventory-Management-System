@@ -21,31 +21,16 @@ namespace IMS.Controllers
             return View(db.Customers.ToList());
         }
 
-        // GET: /Customer/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Customer customer = db.Customers.Find(id);
-            if (customer == null)
-            {
-                return HttpNotFound();
-            }
-            return View(customer);
-        }
-
+       
         // GET: /Customer/Create
         public ActionResult Create()
         {
-            return View();
+            var customer = new Customer();
+            return PartialView("Create", customer);
         }
 
         // POST: /Customer/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+       [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include="CustomerId,CustomerName,CustomerAddress,CustomerContact")] Customer customer)
         {
@@ -53,10 +38,10 @@ namespace IMS.Controllers
             {
                 db.Customers.Add(customer);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return Json(new { success = true });
             }
 
-            return View(customer);
+            return PartialView("Create", customer);
         }
 
         // GET: /Customer/Edit/5
