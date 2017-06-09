@@ -1,0 +1,59 @@
+﻿@model IMS.Models.Customer
+
+<!--MODAL HEADER-->
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 class="modal-title">Editing @Html.DisplayFor(model => model.CustomerName)</h3>
+
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+     <!--MODAL BODY-->
+    <div class="modal-body">
+        <div class="container-fluid">
+            <form>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.CustomerId)
+                <div class="row">
+                    <div class="col-md-12 form-group">
+                        @Html.LabelFor(model => model.CustomerName, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.CustomerName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.CustomerName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 form-group">
+                        @Html.LabelFor(model => model.CustomerAddress, new { @class = "control-label bold" })
+                        @Html.TextBoxFor(model => model.CustomerAddress, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.CustomerAddress, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 form-group">
+                        @Html.LabelFor(model => model.CustomerContact, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.CustomerContact, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.CustomerContact, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+        <!--MODAL FOOTER-->
+    <div class="modal-footer">
+        <input class="btn btn-primary" type="submit" value="Save" />
+        <button class="btn btn-warning" data-dismiss="modal">Close</button>
+    </div>
+
+}
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script>
+    $("form").removeData("validator");
+    $("form").removeData("unobtrusiveValidation");
+    $.validator.unobtrusive.parse("form");
+</script>

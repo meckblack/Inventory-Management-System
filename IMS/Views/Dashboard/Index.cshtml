@@ -3,9 +3,10 @@
     ViewBag.Title = "Index";
 }
 
-<!--div class="row">
-    <div class="col-md-9 main-chart">
 
+
+<div class="row">
+    <div class="col-md-12 main-chart">
         <div class="row mtbox">
             <div class="col-md-2 col-sm-2 col-md-offset-1 box0">
                 <div class="box1">
@@ -43,12 +44,12 @@
                 <p>Your server is working perfectly. Relax & enjoy.</p>
             </div>
 
-        </div>
+        </div><!-- /row mt -->
 
 
         <div class="row mt">
             <!-- SERVER STATUS PANELS -->
-            <!--div class="col-md-4 col-sm-4 mb">
+            <div class="col-md-4 col-sm-4 mb">
                 <div class="white-panel pn donut-chart">
                     <div class="white-header">
                         <h5>SERVER LOAD</h5>
@@ -73,10 +74,10 @@
                         var myDoughnut = new Chart(document.getElementById("serverstatus01").getContext("2d")).Doughnut(doughnutData);
                     </script>
                 </div><! --/grey-panel -->
-            </!--div><!-- /col-md-4-->
+            </div><!-- /col-md-4-->
 
 
-            <!--div class="col-md-4 col-sm-4 mb">
+            <div class="col-md-4 col-sm-4 mb">
                 <div class="white-panel pn">
                     <div class="white-header">
                         <h5>TOP PRODUCT</h5>
@@ -88,18 +89,20 @@
                         <div class="col-sm-6 col-xs-6"></div>
                     </div>
                     <div class="centered">
-                        <img src="assets/img/product.png" width="120">
+                        <img src="~/content/image/product.jpg" width="120">
                     </div>
                 </div>
-            </!--div><!-- /col-md-4 -->
+            </div><!-- /col-md-4 -->
 
-            <!--div class="col-md-4 mb">
+            <div class="col-md-4 mb">
                 <!-- WHITE PANEL - TOP USER -->
-                <!--div class="white-panel pn">
+                <div class="white-panel pn">
                     <div class="white-header">
                         <h5>TOP USER</h5>
                     </div>
-                    <p><img src="assets/img/ui-zac.jpg" class="img-circle" width="80"></p>
+                    <p>
+                        <img src="~/Content/Image/ui-sam.jpg" class="img-circle" width="80" />
+                    </p>
                     <p><b>Zac Snider</b></p>
                     <div class="row">
                         <div class="col-md-6">
@@ -111,8 +114,8 @@
                             <p>$ 47,60</p>
                         </div>
                     </div>
-                </!--div>
-            </!--div><!-- /col-md-4 -->
-        <!-- /row -->
-    <!-- /col-lg-9 END SECTION MIDDLE -->
- <
+                </div>
+            </div><!-- /col-md-4 -->
+            </div><!-- /row -->
+    </div><!-- /col-lg-9 END SECTION MIDDLE -->
+</div>

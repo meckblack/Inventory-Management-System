@@ -27,7 +27,8 @@
                 <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
             </div>
             <!--logo start-->
-            <a href="index.html" class="logo"><b>DASHGUM FREE</b></a>
+            <a href="index.html" class="logo">
+                <img src="~/Content/Image/logo-bd.png"  width="80" height="24"/> </a>
             <!--logo end-->
            
             <div class="top-menu">
@@ -43,9 +44,8 @@
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu" id="nav-accordion">
 
-                    <p class="centered"><a href="profile.html"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
-                    <h5 class="centered">Marcel Newman</h5>
-
+                    <p class="centered"><a href="profile.html"><img src="~/Content/Image/fr-05.jpg" class="img-circle" width="60"></a></p>
+                    
                     <li class="mt">
                         <a class="active" href="index.html">
                             <i class="fa fa-dashboard"></i>
@@ -56,7 +56,7 @@
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-desktop"></i>
-                            <span>UI Elements</span>
+                            <span>Customers</span>
                         </a>
                         <ul class="sub">
                             <li><a href="general.html">General</a></li>
@@ -68,7 +68,7 @@
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-cogs"></i>
-                            <span>Components</span>
+                            <span>Suppliers</span>
                         </a>
                         <ul class="sub">
                             <li><a href="calendar.html">Calendar</a></li>
@@ -127,20 +127,22 @@
         <section id="main-content">
             <section class="wrapper">
 
-
-
-                <div class="container-fluid">
-                    <div class="container body-content">
+            <!--Rendering Body Start-->
                         @RenderBody()
-                        <hr />
-                        <footer>
-                            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-                        </footer>
-                    </div>
-                </div>
-
+                    
+           <!--Rendering Body Start-->
             </section>
         </section>
+        <!--footer start-->
+        <footer class="site-footer">
+            <div class="text-center">
+                &copy; @DateTime.Now.Year - Bizzdesk Global Group
+                <a href="responsive_table.html#" class="go-top">
+                    <i class="fa fa-angle-up"></i>
+                </a>
+            </div>
+        </footer>
+        <!--footer end-->
     </section>
 
             <!-- js placed at the end of the document so the pages load faster -->

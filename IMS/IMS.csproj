@@ -185,16 +185,25 @@
     <Compile Include="Migrations\201706071358402_DoubleChecking.Designer.cs">
       <DependentUpon>201706071358402_DoubleChecking.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706090021491_AddedSupplier.cs" />
+    <Compile Include="Migrations\201706090021491_AddedSupplier.Designer.cs">
+      <DependentUpon>201706090021491_AddedSupplier.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Supplier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\Image\fr-05.jpg" />
+    <Content Include="Content\Image\logo-bd.png" />
+    <Content Include="Content\Image\product.jpg" />
+    <Content Include="Content\Image\ui-sam.jpg" />
     <Content Include="Content\style-responsive.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\table-responsive.css" />
@@ -270,9 +279,11 @@
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Customer\Create.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\Customer\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\NewFolder1\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
@@ -285,6 +296,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706071358402_DoubleChecking.resx">
       <DependentUpon>201706071358402_DoubleChecking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706090021491_AddedSupplier.resx">
+      <DependentUpon>201706090021491_AddedSupplier.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

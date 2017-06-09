@@ -56,7 +56,7 @@ namespace IMS.Controllers
             {
                 return HttpNotFound();
             }
-            return View(customer);
+            return PartialView("Edit", customer);
         }
 
         // POST: /Customer/Edit/5
@@ -70,9 +70,9 @@ namespace IMS.Controllers
             {
                 db.Entry(customer).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return Json(new { success = true });
             }
-            return View(customer);
+            return PartialView("Edit", customer);
         }
 
         // GET: /Customer/Delete/5
@@ -87,7 +87,7 @@ namespace IMS.Controllers
             {
                 return HttpNotFound();
             }
-            return View(customer);
+            return PartialView("Delete", customer);
         }
 
         // POST: /Customer/Delete/5
@@ -98,7 +98,7 @@ namespace IMS.Controllers
             Customer customer = db.Customers.Find(id);
             db.Customers.Remove(customer);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return Json(new { success = true });
         }
 
         protected override void Dispose(bool disposing)
