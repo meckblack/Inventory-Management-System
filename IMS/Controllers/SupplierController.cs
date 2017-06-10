@@ -11,105 +11,104 @@ using IMS.DAL;
 
 namespace IMS.Controllers
 {
-    public class CustomerController : Controller
+    public class SupplierController : Controller
     {
         private IMS_DB db = new IMS_DB();
 
-        // GET: /Customer/
+        // GET: /Supplier/
         public ActionResult Index()
         {
-            return View(db.Customers.ToList());
+            return View(db.Suppliers.ToList());
         }
 
-        // GET: /Customer/Details/5
+        // GET: /Supplier/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = db.Customers.Find(id);
-            if (customer == null)
+            Supplier supplier = db.Suppliers.Find(id);
+            if (supplier == null)
             {
                 return HttpNotFound();
             }
-            return View(customer);
+            return View(supplier);
         }
 
-        // GET: /Customer/Create
+        // GET: /Supplier/Create
         public ActionResult Create()
         {
-            var customer = new Customer();
-            return PartialView("Create", customer);
+            var supplier = new Supplier();
+            return PartialView("Create", supplier);
         }
 
-        // POST: /Customer/Create
+        // POST: /Supplier/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="CustomerId,CustomerName,CustomerAddress,CustomerContact")] Customer customer)
+        public ActionResult Create([Bind(Include="SupplierId,SupplierName,SupplierAddress,SupplierContact")] Supplier supplier)
         {
             if (ModelState.IsValid)
             {
-                db.Customers.Add(customer);
+                db.Suppliers.Add(supplier);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-                //return Json(new { success = true });
             }
 
             return RedirectToAction("Index");
         }
 
-        // GET: /Customer/Edit/5
+        // GET: /Supplier/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = db.Customers.Find(id);
-            if (customer == null)
+            Supplier supplier = db.Suppliers.Find(id);
+            if (supplier == null)
             {
                 return HttpNotFound();
             }
-            return PartialView("Edit", customer);
+            return PartialView("Edit", supplier);
         }
 
-        // POST: /Customer/Edit/5
+        // POST: /Supplier/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="CustomerId,CustomerName,CustomerAddress,CustomerContact")] Customer customer)
+        public ActionResult Edit([Bind(Include="SupplierId,SupplierName,SupplierAddress,SupplierContact")] Supplier supplier)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(customer).State = EntityState.Modified;
+                db.Entry(supplier).State = EntityState.Modified;
                 db.SaveChanges();
-                return Json(new { success = true });
+                return RedirectToAction("Index");
             }
-            return PartialView("Edit", customer);
+            return RedirectToAction("Index");
         }
 
-        // GET: /Customer/Delete/5
+        // GET: /Supplier/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = db.Customers.Find(id);
-            if (customer == null)
+            Supplier supplier = db.Suppliers.Find(id);
+            if (supplier == null)
             {
                 return HttpNotFound();
             }
-            return View(customer);
+            return PartialView("Delete" ,supplier);
         }
 
-        // POST: /Customer/Delete/5
+        // POST: /Supplier/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Customer customer = db.Customers.Find(id);
-            db.Customers.Remove(customer);
+            Supplier supplier = db.Suppliers.Find(id);
+            db.Suppliers.Remove(supplier);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

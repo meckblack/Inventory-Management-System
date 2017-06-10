@@ -1,26 +1,27 @@
-﻿@model IEnumerable<IMS.Models.Customer>
+﻿@model IEnumerable<IMS.Models.Supplier>
 
 @{
     ViewBag.Title = "Index";
-    var customer = new IMS.Models.Customer();
+    var supplier = new IMS.Models.Supplier();
 }
 <style>
     td {
         text-align: center;
         vertical-align: middle;
     }
+
     th {
         text-align: center;
         vertical-align: middle;
     }
 </style>
-        <h3>
-            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModalCreate"><i class="fa fa-plus fa-2x"></i> ADD</button>
-        </h3>
+<h3>
+    <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModalCreate"><i class="fa fa-plus fa-2x"></i> ADD</button>
+</h3>
 <div class="row mt">
     <div class="col-lg-12">
         <div class="content-panel">
-            <h4> CUSTOMERS </h4>
+            <h4> SUPPLIERS </h4>
             <h4><i class="fa fa-search-plus pull-right"></i></h4>
             <section id="unseen">
                 <table class="table table-bordered table-striped table-condensed">
@@ -30,13 +31,13 @@
                                 #
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.CustomerName)
+                                @Html.DisplayNameFor(model => model.SupplierName)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.CustomerAddress)
+                                @Html.DisplayNameFor(model => model.SupplierAddress)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.CustomerContact)
+                                @Html.DisplayNameFor(model => model.SupplierContact)
                             </th>
                             <th>
                                 Actions
@@ -48,22 +49,21 @@
                         {
                             <tr>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.CustomerId)
+                                    @Html.DisplayFor(modelItem => item.SupplierId)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.CustomerName)
+                                    @Html.DisplayFor(modelItem => item.SupplierName)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.CustomerAddress)
+                                    @Html.DisplayFor(modelItem => item.SupplierAddress)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.CustomerContact)
+                                    @Html.DisplayFor(modelItem => item.SupplierContact)
                                 </td>
-                                <td>
-                                    <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalEdit"><i class="fa fa-edit fa-2x"></i> Edit</button>
-                                    <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModalDelete"><i class="fa fa-trash-o fa-2x "></i> Delete</button>
-                                    <button data-toggle="modal" data-target="#myModal6"><i style="; color: blue; " class="fa fa-2x fa-edit"></i>EDIT</button>
-                                    <a href="@Url.Action("Delete", "Customer", new { id = item.CustomerId })" data-modal=""><i style="color: red;" class="fa fa-2x fa-trash"></i></a>
+                                <td> 
+                                    <a href="@Url.Action("Edit", "Supplier", new { id = item.SupplierId })" data-target="myModal"><i style="padding-right: 5px" class="fa fa-2x fa-share-square-o"></i></a>
+                                    <i class="fa fa-edit fa-2x" data-toggle="modal" id=item.IncomeCategoryId data-target="#myModalEdit"></i>
+                                    <i class="fa fa-trash-o fa-2x" data-toggle="modal" data-target="#myModalDelete" style="color: red"></i>
                                 </td>
                             </tr>
                         }
@@ -76,14 +76,14 @@
 
 
 
-        
+
 
 
 <div class="modal fade" id="myModalCreate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel6">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             @{
-                Html.RenderPartial("Create", customer);
+                Html.RenderPartial("Create", supplier);
             }
         </div>
 
@@ -93,34 +93,24 @@
 <div class="modal fade" id="myModalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel6">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-           @{
-                Html.RenderPartial("Edit", customer);
+            @{
+                Html.RenderPartial("Edit", supplier);
             }
         </div>
 
     </div>
 </div>
 
-<div class="modal fade" id="myModalDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel6">
-    <div class="modal-dialog" role="document">
+<!-- modal placeholder-->
+<div id='myModal' class='modal fade in'>
+    <div class="modal-dialog">
         <div class="modal-content">
-            @*{
-                Html.RenderPartial("Delete", customer);
-            }*@
-        </div>
+            <div id='myModalContent'>
 
+            </div>
+        </div>
     </div>
 </div>
+<script src="~/scripts/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script src="~/Scripts/Appjs/IMS.js"></script>
 
-
-
-
-
-
-
-
-
-
-
-
-   

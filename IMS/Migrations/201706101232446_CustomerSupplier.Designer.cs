@@ -7,13 +7,13 @@ namespace IMS.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.0.2-21211")]
-    public sealed partial class DoubleChecking : IMigrationMetadata
+    public sealed partial class CustomerSupplier : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(DoubleChecking));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(CustomerSupplier));
         
         string IMigrationMetadata.Id
         {
-            get { return "201706071358402_DoubleChecking"; }
+            get { return "201706101232446_CustomerSupplier"; }
         }
         
         string IMigrationMetadata.Source
