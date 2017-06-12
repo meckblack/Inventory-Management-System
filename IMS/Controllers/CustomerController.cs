@@ -52,11 +52,10 @@ namespace IMS.Controllers
             {
                 db.Customers.Add(customer);
                 db.SaveChanges();
-                return RedirectToAction("Index");
-                //return Json(new { success = true });
+                return Json(new { success = true });
             }
 
-            return RedirectToAction("Index");
+            return Json(customer, JsonRequestBehavior.AllowGet);
         }
 
         // GET: /Customer/Edit/5
@@ -100,7 +99,7 @@ namespace IMS.Controllers
             {
                 return HttpNotFound();
             }
-            return View(customer);
+            return PartialView("Delete", customer);
         }
 
         // POST: /Customer/Delete/5
@@ -111,7 +110,7 @@ namespace IMS.Controllers
             Customer customer = db.Customers.Find(id);
             db.Customers.Remove(customer);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return Json(new { success = true });
         }
 
         protected override void Dispose(bool disposing)

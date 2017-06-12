@@ -21,20 +21,6 @@ namespace IMS.Controllers
             return View(db.Suppliers.ToList());
         }
 
-        // GET: /Supplier/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Supplier supplier = db.Suppliers.Find(id);
-            if (supplier == null)
-            {
-                return HttpNotFound();
-            }
-            return View(supplier);
-        }
 
         // GET: /Supplier/Create
         public ActionResult Create()
@@ -52,10 +38,10 @@ namespace IMS.Controllers
             {
                 db.Suppliers.Add(supplier);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return Json(new { success = true });
             }
 
-            return RedirectToAction("Index");
+            return PartialView("Create", supplier);
         }
 
         // GET: /Supplier/Edit/5
@@ -82,9 +68,9 @@ namespace IMS.Controllers
             {
                 db.Entry(supplier).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return Json(new { success = true });
             }
-            return RedirectToAction("Index");
+            return PartialView("Edit", supplier);
         }
 
         // GET: /Supplier/Delete/5
@@ -99,7 +85,7 @@ namespace IMS.Controllers
             {
                 return HttpNotFound();
             }
-            return PartialView("Delete" ,supplier);
+            return PartialView("Delete", supplier);
         }
 
         // POST: /Supplier/Delete/5
@@ -110,7 +96,7 @@ namespace IMS.Controllers
             Supplier supplier = db.Suppliers.Find(id);
             db.Suppliers.Remove(supplier);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return Json(new { success = true });
         }
 
         protected override void Dispose(bool disposing)
