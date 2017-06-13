@@ -182,9 +182,20 @@
     <Compile Include="Migrations\201706101232446_CustomerSupplier.Designer.cs">
       <DependentUpon>201706101232446_CustomerSupplier.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706130455118_AddedStockCateogryModels.cs" />
+    <Compile Include="Migrations\201706130455118_AddedStockCateogryModels.Designer.cs">
+      <DependentUpon>201706130455118_AddedStockCateogryModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706130840269_AddedProduct.cs" />
+    <Compile Include="Migrations\201706130840269_AddedProduct.Designer.cs">
+      <DependentUpon>201706130840269_AddedProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Stock.cs" />
     <Compile Include="Models\Supplier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -290,6 +301,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201706101232446_CustomerSupplier.resx">
       <DependentUpon>201706101232446_CustomerSupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706130455118_AddedStockCateogryModels.resx">
+      <DependentUpon>201706130455118_AddedStockCateogryModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706130840269_AddedProduct.resx">
+      <DependentUpon>201706130840269_AddedProduct.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
