@@ -8,7 +8,7 @@
 </div>
 
 
-@using (Html.BeginForm("Create", "Stock", FormMethod.Post))
+@using (Html.BeginForm("Edit", "Stock", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.StockId)
