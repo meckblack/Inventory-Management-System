@@ -33,7 +33,7 @@ namespace IMS.Controllers
             {
                 return HttpNotFound();
             }
-            return View(customer);
+            return PartialView("Details", customer);
         }
 
         // GET: /Customer/Create
@@ -55,7 +55,7 @@ namespace IMS.Controllers
                 return Json(new { success = true });
             }
 
-            return Json(customer, JsonRequestBehavior.AllowGet);
+            return PartialView("Create", customer);
         }
 
         // GET: /Customer/Edit/5

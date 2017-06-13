@@ -9,7 +9,7 @@
 @using (Html.BeginForm("Edit", "Supplier", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-
+    @Html.HiddenFor(model => model.SupplierId)
      <!--MODAL BODY-->
     <div class="modal-body">
         <div class="container-fluid">
