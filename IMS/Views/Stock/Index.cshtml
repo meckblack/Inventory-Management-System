@@ -1,0 +1,102 @@
+﻿@model IEnumerable<IMS.Models.Stock>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    td {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    th {
+        text-align: center;
+        vertical-align: middle;
+    }
+</style>
+
+<h3 class="pull-right">
+    <a href="@Url.Action("Create", "Stock")" class="btn btn-primary btn-sm" data-modal=""><i style="color: red;" class="fa fa-2x fa-plus"></i> Add</a>
+</h3>
+
+<div class="row mt">
+    <div class="col-lg-12">
+        <div class="content-panel">
+            <h4> STOCKS </h4>
+            <h4><i class="fa fa-search-plus pull-right"></i></h4>
+            <section id="unseen">
+                <table class="table table-bordered table-striped table-condensed">
+                    <thead>
+                        <tr>
+                            <th>
+                                #
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.StockName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.StockCategory)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.StockSupplier)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.StockBuyingPrice)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.StockSellingPrice)
+                            </th>
+                            <th>
+                                Actions
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.StockId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.StockName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.StockCategory)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.StockSupplier)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.StockBuyingPrice)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.StockSellingPrice)
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Edit", "Stock", new { id = item.StockId })" data-modal=""><i style="color: sandybrown;" class="fa fa-2x fa-edit"></i></a>
+                                    <a href="@Url.Action("Details", "Stock", new { id = item.StockId })" data-modal=""><i style="color: red;" class="fa fa-2x fa-trash"></i></a>
+                                    <a href="@Url.Action("Delete", "Stock", new { id = item.StockId })" data-modal=""><i style="color: red;" class="fa fa-2x fa-trash"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </section>
+        </div><!-- /content-panel -->
+    </div><!-- /col-lg-4 -->
+</div><!-- /row -->
+<!-- modal placeholder-->
+<div id='myModal' class='modal fade in'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id='myModalContent'>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/Appjs/IMS.js"></script>
