@@ -20,8 +20,9 @@ namespace IMS.Controllers
         public ActionResult Index(int CategoryId)
         {
             var x = db.Category.Find(CategoryId);
-            Session["CategoryName"] = x.CategoryName;
-            Session["CategoryId"] = x.CategoryId;
+            Session["categoryname"] = x.CategoryName;
+            Session["categoryId"] = x.CategoryId;
+
             var product = db.Product.Where(p => p.CategoryId == CategoryId).ToList();
             return View(product);
         }
@@ -51,17 +52,17 @@ namespace IMS.Controllers
         // POST: /Product/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="ProductId,ProductName,CategoryId")] Product product)
+        public ActionResult Create([Bind(Include="ProductId,ProductName,ProductQuantity,ProductDescription,CategoryId")] Product product)
         {
             if (ModelState.IsValid)
             {
                 var p = new Product
                 {
-                    CategoryId = Convert.ToInt32(Session["CategoryId"]),
+                    CategoryId = Convert.ToInt32(Session["categoryId"]),
                     ProductName = product.ProductName,
+                    ProductDescription = product.ProductDescription,
                     ProductQuantity = product.ProductQuantity
                 };
-
                 db.Product.Add(p);
                 db.SaveChanges();
                 return Json(new { success = true });
@@ -82,13 +83,14 @@ namespace IMS.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.CategoryId = new SelectList(db.Category, "CategoryId", "CategoryName", product.CategoryId);
             return PartialView("Edit", product);
         }
 
         // POST: /Product/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="ProductId,ProductName,CategoryId")] Product product)
+        public ActionResult Edit([Bind(Include="ProductId,ProductName,ProductQuantity,ProductDescription,CategoryId")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -96,6 +98,7 @@ namespace IMS.Controllers
                 db.SaveChanges();
                 return Json(new { success = true });
             }
+            ViewBag.CategoryId = new SelectList(db.Category, "CategoryId", "CategoryName", product.CategoryId);
             return PartialView("Edit", product);
         }
 
