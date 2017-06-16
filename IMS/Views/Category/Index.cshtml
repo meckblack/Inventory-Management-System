@@ -3,6 +3,8 @@
 @{
     ViewBag.Title = "Index";
     IMS.DAL.IMS_DB db = new IMS.DAL.IMS_DB();
+    var x = 1;
+    
 }
 
 <style>
@@ -16,9 +18,11 @@
         vertical-align: middle;
     }
 </style>
-<h3 class="pull-right">
-    <a href="@Url.Action("Create", "Category")" class="btn btn-primary btn-sm" data-modal=""><i style="color: red;" class="fa fa-2x fa-plus"></i> Add</a>
-</h3>
+<ul class="breadcrumb">
+    <li><a href="@Url.Action("Index", "Dashboard")">Dashboard</a></li>
+    <a href="@Url.Action("Create", "Category")" class="btn btn-primary btn-sm pull-right" data-modal=""><i style="color: red;" class="fa fa-2x fa-plus"></i> Add</a>
+</ul>
+
 <div class="row mt">
     <div class="col-lg-12">
         <div class="content-panel">
@@ -29,7 +33,7 @@
                     <thead>
                         <tr>
                             <th>
-                                #
+                                S/N
                             </th>
                             <th>
                                 @Html.DisplayNameFor(model => model.CategoryName)
@@ -47,7 +51,7 @@
                         {
                             <tr>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.CategoryId)
+                                    @(x++)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.CategoryName)
