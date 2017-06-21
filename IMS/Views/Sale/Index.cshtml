@@ -1,8 +1,7 @@
-﻿@model IEnumerable<IMS.Models.Supplier>
+﻿@model IEnumerable<IMS.Models.Sale>
 
 @{
     ViewBag.Title = "Index";
-    var customer = new IMS.Models.Customer();
     var x = 1;
 }
 <style>
@@ -16,16 +15,14 @@
         vertical-align: middle;
     }
 </style>
-
 <ul class="breadcrumb">
     <li><a href="@Url.Action("Index", "Dashboard")">Dashboard</a></li>
-    <a href="@Url.Action("Create", "Supplier")" class="btn btn-primary btn-sm pull-right" data-modal=""><i style="color: red;" class="fa fa-2x fa-plus"></i> Add</a>
+    <a href="@Url.Action("Create", "Sale")" class="btn btn-primary btn-sm pull-right" data-modal=""><i style="color: red;" class="fa fa-2x fa-plus"></i> Add</a>
 </ul>
-
 <div class="row mt">
     <div class="col-lg-12">
         <div class="content-panel">
-            <h4> SUPPLIERS </h4>
+            <h4> SALES </h4>
             <h4><i class="fa fa-search-plus pull-right"></i></h4>
             <section id="unseen">
                 <table class="table table-bordered table-striped table-condensed">
@@ -35,13 +32,22 @@
                                 #
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.SupplierName)
+                                @Html.DisplayNameFor(model => model.SaleBillNo)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.SupplierAddress)
+                                @Html.DisplayNameFor(model => model.SaleProductName)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.SupplierContact)
+                                @Html.DisplayNameFor(model => model.SaleCustomer)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.SaleDate)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.SaleCostTotal)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.SaleBalance)
                             </th>
                             <th>
                                 Actions
@@ -56,17 +62,27 @@
                                     @(x++)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.SupplierName)
+                                    @Html.DisplayFor(modelItem => item.SaleBillNo)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.SupplierAddress)
+                                    @Html.DisplayFor(modelItem => item.SaleProductName)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.SupplierContact)
+                                    @Html.DisplayFor(modelItem => item.SaleCustomer)
                                 </td>
                                 <td>
-                                    <a href="@Url.Action("Edit", "Supplier", new { id = item.SupplierId })" data-modal=""><i style="color: brown;" class="fa fa-2x fa-edit"></i></a>
-                                    <a href="@Url.Action("Delete", "Supplier", new { id = item.SupplierId })" data-modal=""><i style="color: red;" class="fa fa-2x fa-trash"></i></a>
+                                    @Html.DisplayFor(modelItem => item.SaleDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SaleCostTotal)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SaleBalance)
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Details", "Sale", new { id = item.SaleId })" data-modal=""><i style="color: blue;" class="fa fa-2x fa-file-text-o"></i></a>
+                                    <a href="@Url.Action("Edit", "Sale", new { id = item.SaleId })" data-modal=""><i style="color: brown;" class="fa fa-2x fa-edit"></i></a>
+                                    <a href="@Url.Action("Delete", "Sale", new { id = item.SaleId })" data-modal=""><i style="color: red;" class="fa fa-2x fa-trash"></i></a>
                                 </td>
                             </tr>
                         }
@@ -76,8 +92,6 @@
         </div><!-- /content-panel -->
     </div><!-- /col-lg-4 -->
 </div><!-- /row -->
-
-
 <!-- modal placeholder-->
 <div id='myModal' class='modal fade in'>
     <div class="modal-dialog">

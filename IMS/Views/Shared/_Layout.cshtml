@@ -51,7 +51,7 @@
                     <p class="centered"><a href="profile.html"><img src="~/Content/Image/fr-05.jpg" class="img-circle" width="60"></a></p>
 
                     <li class="mt">
-                        <a class="active" href="index.html">
+                        <a class="active" href="@Url.Action("Index", "Dashboard")">
                             <i class="fa fa-dashboard"></i>
                             <span>Dashboard</span>
                         </a>
@@ -72,7 +72,7 @@
                     </li>
 
                     <li class="sub-menu">
-                        <a href="@Url.Action("Index", "Customer")">
+                        <a href="@Url.Action("Index", "Supplier")">
                             <i class="fa fa-cogs"></i>
                             <span>Suppliers</span>
                         </a>
@@ -94,15 +94,33 @@
                         </ul>
                     </li>
                     <li class="sub-menu">
-                        <a href="javascript:;">
+                        <a href="@Url.Action("Index", "Sale")">
                             <i class="fa fa-th"></i>
-                            <span>Data Tables</span>
+                            <span>Sales</span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class=" fa fa-money"></i>
+                            <span>Payments</span>
                         </a>
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class=" fa fa-bar-chart-o"></i>
-                            <span>Charts</span>
+                            <span>Outstanding</span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class=" fa fa-file-text"></i>
+                            <span>Pending</span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class=" fa fa-th-list"></i>
+                            <span>Reports</span>
                         </a>
                     </li>
 
