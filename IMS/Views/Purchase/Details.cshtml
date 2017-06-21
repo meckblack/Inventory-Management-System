@@ -1,0 +1,102 @@
+﻿
+@model IMS.Models.Purchase
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<style>
+    .padd{
+        padding-left: 120px;
+    }
+</style>
+<!--MODAL HEADER-->
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 class="modal-title">Purchase Details</h3>
+</div>
+
+<!--MODAL BODY-->
+<div class="modal-body">
+    <dl class="dl-horizontal padd" >
+        <dt>
+            <strong>@Html.DisplayNameFor(model => model.PurchaseBillNo)</strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PurchaseBillNo)
+        </dd>
+
+        <dt>
+            <strong>@Html.DisplayNameFor(model => model.PurchaseProductName)</strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PurchaseProductName)
+        </dd>
+
+        <dt>
+            <strong>@Html.DisplayNameFor(model => model.PurchaseSupplier)</strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PurchaseSupplier)
+        </dd>
+
+        <dt>
+            <strong>Purchase @Html.DisplayNameFor(model => model.PurchaseDate)</strong>
+        </dt>
+        
+        <dd>
+            @Html.DisplayFor(model => model.PurchaseDate)
+        </dd>
+
+        <dt>
+            <strong>@Html.DisplayNameFor(model => model.PurchaseQuantity)</strong>
+        </dt>
+
+
+        <dd>
+            @Html.DisplayFor(model => model.PurchaseQuantity)
+        </dd>
+
+        <dt>
+            <strong>@Html.DisplayNameFor(model => model.PurchaseDueDate)</strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PurchaseDueDate)
+        </dd>
+
+        <dt>
+            <strong>@Html.DisplayNameFor(model => model.PurchaseCostRate)</strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PurchaseCostRate)
+        </dd>
+
+        <dt>
+            <strong>@Html.DisplayNameFor(model => model.PurcahseBalance)</strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PurcahseBalance)
+        </dd>
+
+        <dt>
+            <strong>@Html.DisplayNameFor(model => model.PurchaseMode)</strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PurchaseMode)
+        </dd>
+    </dl>
+</div>
+
+<!--MODAL FOOTER-->
+<div class="modal-footer">
+    <button class="btn btn-primary" data-dismiss="modal">Close</button>
+</div>
+
+

@@ -176,7 +176,7 @@
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\StockController.cs" />
-    <Compile Include="Controllers\StockPurchaseController.cs" />
+    <Compile Include="Controllers\PurchaseController.cs" />
     <Compile Include="Controllers\SupplierController.cs" />
     <Compile Include="DAL\IMS_DB.cs" />
     <Compile Include="DAL\MyInitializer.cs" />
@@ -191,21 +191,9 @@
     <Compile Include="Migrations\201706211101245_Next.Designer.cs">
       <DependentUpon>201706211101245_Next.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201706211245061_AddedPurchaseStock.cs" />
-    <Compile Include="Migrations\201706211245061_AddedPurchaseStock.Designer.cs">
-      <DependentUpon>201706211245061_AddedPurchaseStock.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706211342412_EditedStockPurchase.cs" />
-    <Compile Include="Migrations\201706211342412_EditedStockPurchase.Designer.cs">
-      <DependentUpon>201706211342412_EditedStockPurchase.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706211450394_EditedStockPurchase2.cs" />
-    <Compile Include="Migrations\201706211450394_EditedStockPurchase2.Designer.cs">
-      <DependentUpon>201706211450394_EditedStockPurchase2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706211522483_EditedStockPurchase3.cs" />
-    <Compile Include="Migrations\201706211522483_EditedStockPurchase3.Designer.cs">
-      <DependentUpon>201706211522483_EditedStockPurchase3.cs</DependentUpon>
+    <Compile Include="Migrations\201706212111350_AddedPurchase.cs" />
+    <Compile Include="Migrations\201706212111350_AddedPurchase.Designer.cs">
+      <DependentUpon>201706212111350_AddedPurchase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -213,8 +201,8 @@
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\PaymentMode.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Purchase.cs" />
     <Compile Include="Models\Stock.cs" />
-    <Compile Include="Models\StockPurchase.cs" />
     <Compile Include="Models\Supplier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -334,9 +322,6 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Admin\Create.cshtml" />
     <Content Include="Views\Admin\Delete.cshtml" />
     <Content Include="Views\Admin\Details.cshtml" />
@@ -364,11 +349,14 @@
     <Content Include="Views\Product\Delete.cshtml" />
     <Content Include="Views\Product\Edit.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
-    <Content Include="Views\StockPurchase\Create.cshtml" />
-    <Content Include="Views\StockPurchase\Delete.cshtml" />
-    <Content Include="Views\StockPurchase\Details.cshtml" />
-    <Content Include="Views\StockPurchase\Edit.cshtml" />
-    <Content Include="Views\StockPurchase\Index.cshtml" />
+    <Content Include="Views\Purchase\Create.cshtml" />
+    <Content Include="Views\Purchase\Delete.cshtml" />
+    <Content Include="Views\Purchase\Details.cshtml" />
+    <Content Include="Views\Purchase\Edit.cshtml" />
+    <Content Include="Views\Purchase\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -385,17 +373,8 @@
     <EmbeddedResource Include="Migrations\201706211101245_Next.resx">
       <DependentUpon>201706211101245_Next.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706211245061_AddedPurchaseStock.resx">
-      <DependentUpon>201706211245061_AddedPurchaseStock.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706211342412_EditedStockPurchase.resx">
-      <DependentUpon>201706211342412_EditedStockPurchase.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706211450394_EditedStockPurchase2.resx">
-      <DependentUpon>201706211450394_EditedStockPurchase2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706211522483_EditedStockPurchase3.resx">
-      <DependentUpon>201706211522483_EditedStockPurchase3.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201706212111350_AddedPurchase.resx">
+      <DependentUpon>201706212111350_AddedPurchase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

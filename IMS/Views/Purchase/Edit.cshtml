@@ -1,0 +1,122 @@
+﻿@model IMS.Models.Purchase
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<!--MODAL HEADER-->
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 class="modal-title">Editing @Html.DisplayNameFor(model => model.PurchaseProductName)</h3>
+</div>
+
+
+@using (Html.BeginForm("Edit", "Purchase", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.PurchaseId)
+
+     <!--MODAL BODY-->
+    <div class="modal-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-offset-2 col-md-4 form-group">
+                    @Html.LabelFor(model => model.PurchaseBillNo, new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.PurchaseBillNo, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.PurchaseBillNo, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-4 form-group">
+                    @Html.LabelFor(model => model.PurchaseDate, new { @class = "control-label" })
+                    @Html.TextBoxFor(model => Model.PurchaseDate, new { @class = "form-control", @type = "datetime" })
+                    @Html.ValidationMessageFor(model => model.PurchaseDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    @Html.LabelFor(model => model.PurchaseProductName, new { @class = "control-label bold" })
+                    @Html.TextBoxFor(model => model.PurchaseProductName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.PurchaseProductName, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-6 form-group">
+                    @Html.LabelFor(model => model.PurchaseSupplier, new { @class = "control-label bold" })
+                    @Html.TextBoxFor(model => model.PurchaseSupplier, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.PurchaseSupplier, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 form-group">
+                    @Html.LabelFor(model => model.PurchaseQuantity, new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.PurchaseQuantity, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.PurchaseQuantity, " ", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-4 form-group">
+                    @Html.LabelFor(model => model.PurchaseCostRate, new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.PurchaseCostRate, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.PurchaseCostRate, " ", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-4 form-group">
+                    @Html.LabelFor(model => model.PurchaseCostTotal, new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.PurchaseCostTotal, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.PurchaseCostTotal, " ", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    @Html.LabelFor(model => model.PurchasePayment, new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.PurchasePayment, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.PurchasePayment, " ", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-6 form-group">
+                    @Html.LabelFor(model => model.PurcahseBalance, new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.PurcahseBalance, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.PurcahseBalance, " ", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    @Html.LabelFor(model => model.PurchaseDescription, new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.PurchaseDescription, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.PurchaseDescription, " ", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    @Html.LabelFor(model => model.PurchaseMode, new { @class = "control-label" })
+                    @Html.DropDownListFor(m => m.PurchaseMode, new SelectList(Enum.GetValues(typeof(IMS.Models.PaymentMode))), new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.PurchaseMode, " ", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-6 form-group">
+                    @Html.LabelFor(model => model.PurchaseDueDate, new { @class = "control-label" })
+                    @Html.TextBoxFor(model => Model.PurchaseDueDate, new { @class = "form-control", @type = "datetime" })
+                    @Html.ValidationMessageFor(model => model.PurchaseDueDate, " ", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!--MODAL FOOTER-->
+    <div class="modal-footer">
+        <input class="btn btn-primary" type="submit" value="Save" />
+        <button class="btn btn-warning" data-dismiss="modal">Close</button>
+    </div>
+
+}
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script>
+    $("form").removeData("validator");
+    $("form").removeData("unobtrusiveValidation");
+    $.validator.unobtrusive.parse("form");
+
+
+    $(function () {
+        $('input[type=datetime]').datepicker({
+            dateFormat: "dd/M/yy",
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "-60:+0"
+        });
+
+    });
+</script>

@@ -1,4 +1,5 @@
-﻿@model IMS.Models.StockPurchase
+﻿
+@model IMS.Models.Purchase
 
 @{
     ViewBag.Title = "Delete";
@@ -12,16 +13,16 @@
 
 <!--MODAL BODY-->
 <div class="modal-body">
-    <h4 class="text-center"><strong> Product Name: </strong> @Html.DisplayFor(model => model.StockPurchaseProductName) </h4>
-    <h4 class="text-center"><strong> Supplier: </strong> @Html.DisplayFor(model => model.StockPurchaseSupplier) </h4>
-    <h4 class="text-center"><strong> Quantity: </strong> @Html.DisplayFor(model => model.StockPurchaseQuantity) </h4>
+    <h4 class="text-center"><strong> Product Name: </strong> @Html.DisplayFor(model => model.PurchaseProductName) </h4>
+    <h4 class="text-center"><strong> Supplier: </strong> @Html.DisplayFor(model => model.PurchaseSupplier) </h4>
+    <h4 class="text-center"><strong> Quantity: </strong> @Html.DisplayFor(model => model.PurchaseQuantity) </h4>
     
     
     <h3 class="text-center">Are you sure you want to delete ?</h3>
 
 </div>
 
-@using (Html.BeginForm("Delete", "StockPurchase", FormMethod.Post))
+@using (Html.BeginForm("Delete", "Purchase", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 

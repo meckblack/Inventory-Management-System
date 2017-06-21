@@ -21,7 +21,7 @@ namespace IMS.DAL
         public DbSet<Category> Category { get; set; }
         public DbSet<Stock> Stock { get; set; }
         public DbSet<Product> Product { get; set; }
-        public DbSet<StockPurchase> StockPurchase { get; set; }
+        public DbSet<Purchase> Purchase { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

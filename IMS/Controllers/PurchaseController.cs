@@ -11,104 +11,104 @@ using IMS.DAL;
 
 namespace IMS.Controllers
 {
-    public class StockPurchaseController : Controller
+    public class PurchaseController : Controller
     {
         private IMS_DB db = new IMS_DB();
 
-        // GET: /StockPurchase/
+        // GET: /Purchase/
         public ActionResult Index()
         {
-            return View(db.StockPurchase.ToList());
+            return View(db.Purchase.ToList());
         }
 
-        // GET: /StockPurchase/Details/5
+        // GET: /Purchase/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            StockPurchase stockpurchase = db.StockPurchase.Find(id);
-            if (stockpurchase == null)
+            Purchase purchase = db.Purchase.Find(id);
+            if (purchase == null)
             {
                 return HttpNotFound();
             }
-            return PartialView("Details", stockpurchase);
+            return PartialView("Details", purchase);
         }
 
-        // GET: /StockPurchase/Create
+        // GET: /Purchase/Create
         public ActionResult Create()
         {
-            var stockpurchase = new StockPurchase();
-            return PartialView("Create", stockpurchase);
+            var purchase = new Purchase();
+            return PartialView("Create", purchase);
         }
 
-        // POST: /StockPurchase/Create
+        // POST: /Purchase/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(StockPurchase stockpurchase)
+        public ActionResult Create(Purchase purchase)
         {
             if (ModelState.IsValid)
             {
-                db.StockPurchase.Add(stockpurchase);
+                db.Purchase.Add(purchase);
                 db.SaveChanges();
                 return Json(new { success = true });
             }
 
-            return PartialView("Create", stockpurchase);
+            return PartialView("Create", purchase);
         }
 
-        // GET: /StockPurchase/Edit/5
+        // GET: /Purchase/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            StockPurchase stockpurchase = db.StockPurchase.Find(id);
-            if (stockpurchase == null)
+            Purchase purchase = db.Purchase.Find(id);
+            if (purchase == null)
             {
                 return HttpNotFound();
             }
-            return PartialView("Edit", stockpurchase);
+            return PartialView("Edit", purchase);
         }
 
-        // POST: /StockPurchase/Edit/5
+        // POST: /Purchase/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(StockPurchase stockpurchase)
+        public ActionResult Edit(Purchase purchase)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(stockpurchase).State = EntityState.Modified;
+                db.Entry(purchase).State = EntityState.Modified;
                 db.SaveChanges();
                 return Json(new { success = true });
             }
-            return PartialView("Edit", stockpurchase);
+            return PartialView("Edit", purchase);
         }
 
-        // GET: /StockPurchase/Delete/5
+        // GET: /Purchase/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            StockPurchase stockpurchase = db.StockPurchase.Find(id);
-            if (stockpurchase == null)
+            Purchase purchase = db.Purchase.Find(id);
+            if (purchase == null)
             {
                 return HttpNotFound();
             }
-            return PartialView("Delete", stockpurchase);
+            return PartialView("Delete", purchase);
         }
 
-        // POST: /StockPurchase/Delete/5
+        // POST: /Purchase/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            StockPurchase stockpurchase = db.StockPurchase.Find(id);
-            db.StockPurchase.Remove(stockpurchase);
+            Purchase purchase = db.Purchase.Find(id);
+            db.Purchase.Remove(purchase);
             db.SaveChanges();
             return Json(new { success = true });
         }

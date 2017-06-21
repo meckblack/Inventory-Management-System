@@ -1,4 +1,4 @@
-﻿@model IEnumerable<IMS.Models.StockPurchase>
+﻿@model IEnumerable<IMS.Models.Purchase>
 
 @{
     ViewBag.Title = "Index";
@@ -17,7 +17,7 @@
 </style>
 <ul class="breadcrumb">
     <li><a href="@Url.Action("Index", "Dashboard")">Dashboard</a></li>
-    <a href="@Url.Action("Create", "StockPurchase")" class="btn btn-primary btn-sm pull-right" data-modal=""><i style="color: red;" class="fa fa-2x fa-plus"></i> Add</a>
+    <a href="@Url.Action("Create", "Purchase")" class="btn btn-primary btn-sm pull-right" data-modal=""><i style="color: red;" class="fa fa-2x fa-plus"></i> Add</a>
 </ul>
 <div class="row mt">
     <div class="col-lg-12">
@@ -32,22 +32,22 @@
                                 #
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.StockPurchaseBillNo)
+                                @Html.DisplayNameFor(model => model.PurchaseBillNo)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.StockPurchaseProductName)
+                                @Html.DisplayNameFor(model => model.PurchaseProductName)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.StockPurchaseSupplier)
+                                @Html.DisplayNameFor(model => model.PurchaseSupplier)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.StockPurchaseDate)
+                                @Html.DisplayNameFor(model => model.PurchaseDate)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.StockPurchaseCostTotal)
+                                @Html.DisplayNameFor(model => model.PurchaseCostTotal)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.StockPurcahseBalance)
+                                @Html.DisplayNameFor(model => model.PurcahseBalance)
                             </th>
                             <th>
                                 Actions
@@ -62,27 +62,27 @@
                                     @(x++)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.StockPurchaseBillNo)
+                                    @Html.DisplayFor(modelItem => item.PurchaseBillNo)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.StockPurchaseProductName)
+                                    @Html.DisplayFor(modelItem => item.PurchaseProductName)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.StockPurchaseSupplier)
+                                    @Html.DisplayFor(modelItem => item.PurchaseSupplier)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.StockPurchaseDate)
+                                    @Html.DisplayFor(modelItem => item.PurchaseDate)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.StockPurchaseCostTotal)
+                                    @Html.DisplayFor(modelItem => item.PurchaseCostTotal)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.StockPurcahseBalance)
+                                    @Html.DisplayFor(modelItem => item.PurcahseBalance)
                                 </td>
                                 <td>
-                                    <a href="@Url.Action("Details", "StockPurchase", new { id = item.StockPurchaseId })" data-modal=""><i style="color: blue;" class="fa fa-2x fa-file-text-o"></i></a>
-                                    <a href="@Url.Action("Edit", "StockPurchase", new { id = item.StockPurchaseId })" data-modal=""><i style="color: brown;" class="fa fa-2x fa-edit"></i></a>
-                                    <a href="@Url.Action("Delete", "StockPurchase", new { id = item.StockPurchaseId })" data-modal=""><i style="color: red;" class="fa fa-2x fa-trash"></i></a>
+                                    <a href="@Url.Action("Details", "Purchase", new { id = item.PurchaseId })" data-modal=""><i style="color: blue;" class="fa fa-2x fa-file-text-o"></i></a>
+                                    <a href="@Url.Action("Edit", "Purchase", new { id = item.PurchaseId })" data-modal=""><i style="color: brown;" class="fa fa-2x fa-edit"></i></a>
+                                    <a href="@Url.Action("Delete", "Purchase", new { id = item.PurchaseId })" data-modal=""><i style="color: red;" class="fa fa-2x fa-trash"></i></a>
                                 </td>
                             </tr>
                         }

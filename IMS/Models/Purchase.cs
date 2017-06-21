@@ -6,59 +6,59 @@ using System.Web;
 
 namespace IMS.Models
 {
-    public class StockPurchase
+    public class Purchase
     {
         [Key]
-        public int StockPurchaseId { get; set; }
-        
+        public int PurchaseId { get; set; }
+
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         [Required(ErrorMessage = "Purchase Date Required")]
         [Display(Name = "Date")]
         [DataType(DataType.Date, ErrorMessage = "Input A Valid Date")]
-        public DateTime StockPurchaseDate { get; set; }
-        
+        public DateTime PurchaseDate { get; set; }
+
         [Required(ErrorMessage = "Bill No Required")]
         [Display(Name = "Bill Number")]
-        public string StockPurchaseBillNo { get; set; }
+        public string PurchaseBillNo { get; set; }
 
         [Required(ErrorMessage = "Product Name Required")]
         [Display(Name = "Product Name")]
-        public string StockPurchaseProductName { get; set; }
+        public string PurchaseProductName { get; set; }
 
         [Required(ErrorMessage = "Product Quantity Required")]
         [Display(Name = "Quantity")]
-        public int StockPurchaseQuantity { get; set; }
+        public int PurchaseQuantity { get; set; }
 
         [Required(ErrorMessage = "Product Cost Rate Requried")]
-        [Display(Name = "Cost Rate")]
-        public decimal StockPurchaseCostRate { get; set; }
+        [Display(Name = "Cost Rate (N)")]
+        public decimal PurchaseCostRate { get; set; }
 
         [Display(Name = "Cost Total(N)")]
-        public decimal StockPurchaseCostTotal { get; set; }
+        public decimal PurchaseCostTotal { get; set; }
 
         [Required(ErrorMessage = "Payment Requried")]
-        [Display(Name = "Payment")]
-        public decimal StockPurchasePayment { get; set; }
+        [Display(Name = "Payment (N)")]
+        public decimal PurchasePayment { get; set; }
 
         [Required(ErrorMessage = "Purchase Description Required")]
         [Display(Name = "Purchase Description")]
-        public string StockPurchaseDescription { get; set; }
+        public string PurchaseDescription { get; set; }
 
-        [Display(Name = "Purchase Balance")]
-        public decimal StockPurcahseBalance { get; set; }
+        [Display(Name = "Purchase Balance (N)")]
+        public decimal PurcahseBalance { get; set; }
 
         [Required(ErrorMessage = "Purchase Mode Required")]
         [Display(Name = "Payment Mode")]
-        public PaymentMode StockPurchaseMode { get; set; }
+        public PaymentMode PurchaseMode { get; set; }
 
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         [Required(ErrorMessage = "Purchase Due Date Required")]
         [DataType(DataType.Date, ErrorMessage = "Input A Valid Date")]
         [Display(Name = "Due Date")]
-        public DateTime StockPurchaseDueDate { get; set; }
+        public DateTime PurchaseDueDate { get; set; }
 
-        [Required(ErrorMessage = "Stock Puchase Supplier Required")]
+        [Required(ErrorMessage = "Puchase Supplier Required")]
         [Display(Name = "Supplier")]
-        public string StockPurchaseSupplier { get; set; }
+        public string PurchaseSupplier { get; set; }
     }
 }
