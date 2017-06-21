@@ -195,6 +195,10 @@
     <Compile Include="Migrations\201706212111350_AddedPurchase.Designer.cs">
       <DependentUpon>201706212111350_AddedPurchase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706212208319_AddedSale.cs" />
+    <Compile Include="Migrations\201706212208319_AddedSale.Designer.cs">
+      <DependentUpon>201706212208319_AddedSale.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Category.cs" />
@@ -202,6 +206,7 @@
     <Compile Include="Models\PaymentMode.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Purchase.cs" />
+    <Compile Include="Models\Sale.cs" />
     <Compile Include="Models\Stock.cs" />
     <Compile Include="Models\Supplier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -375,6 +380,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706212111350_AddedPurchase.resx">
       <DependentUpon>201706212111350_AddedPurchase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706212208319_AddedSale.resx">
+      <DependentUpon>201706212208319_AddedSale.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
