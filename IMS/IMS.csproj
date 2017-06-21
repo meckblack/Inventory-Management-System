@@ -176,6 +176,7 @@
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\StockController.cs" />
+    <Compile Include="Controllers\StockPurchaseController.cs" />
     <Compile Include="Controllers\SupplierController.cs" />
     <Compile Include="DAL\IMS_DB.cs" />
     <Compile Include="DAL\MyInitializer.cs" />
@@ -307,6 +308,11 @@
     <Content Include="Views\Product\Delete.cshtml" />
     <Content Include="Views\Product\Edit.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\StockPurchase\Create.cshtml" />
+    <Content Include="Views\StockPurchase\Delete.cshtml" />
+    <Content Include="Views\StockPurchase\Details.cshtml" />
+    <Content Include="Views\StockPurchase\Edit.cshtml" />
+    <Content Include="Views\StockPurchase\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
