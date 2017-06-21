@@ -11,8 +11,10 @@ namespace IMS.Models
         [Key]
         public int StockPurchaseId { get; set; }
         
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         [Required(ErrorMessage = "Purchase Date Required")]
         [Display(Name = "Date")]
+        [DataType(DataType.Date, ErrorMessage = "Input A Valid Date")]
         public DateTime StockPurchaseDate { get; set; }
         
         [Required(ErrorMessage = "Bill No Required")]
@@ -32,7 +34,7 @@ namespace IMS.Models
         public decimal StockPurchaseCostRate { get; set; }
 
         [Display(Name = "Cost Total(N)")]
-        public decimal StockPurchaseBuyingTotal { get; set; }
+        public decimal StockPurchaseCostTotal { get; set; }
 
         [Required(ErrorMessage = "Payment Requried")]
         [Display(Name = "Payment")]
@@ -49,7 +51,9 @@ namespace IMS.Models
         [Display(Name = "Payment Mode")]
         public PaymentMode StockPurchaseMode { get; set; }
 
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         [Required(ErrorMessage = "Purchase Due Date Required")]
+        [DataType(DataType.Date, ErrorMessage = "Input A Valid Date")]
         [Display(Name = "Due Date")]
         public DateTime StockPurchaseDueDate { get; set; }
 
