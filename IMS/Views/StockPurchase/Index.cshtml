@@ -22,7 +22,7 @@
 <div class="row mt">
     <div class="col-lg-12">
         <div class="content-panel">
-            <h4> STOCK PURCHASES </h4>
+            <h4> PURCHASES </h4>
             <h4><i class="fa fa-search-plus pull-right"></i></h4>
             <section id="unseen">
                 <table class="table table-bordered table-striped table-condensed">
@@ -32,6 +32,9 @@
                                 #
                             </th>
                             <th>
+                                @Html.DisplayNameFor(model => model.StockPurchaseBillNo)
+                            </th>
+                            <th>
                                 @Html.DisplayNameFor(model => model.StockPurchaseProductName)
                             </th>
                             <th>
@@ -39,9 +42,6 @@
                             </th>
                             <th>
                                 @Html.DisplayNameFor(model => model.StockPurchaseDate)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.StockPurchaseDueDate)
                             </th>
                             <th>
                                 @Html.DisplayNameFor(model => model.StockPurchaseBuyingTotal)
@@ -59,7 +59,10 @@
                         {
                             <tr>
                                 <td>
-                                    SE@(x++)
+                                    @(x++)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.StockPurchaseBillNo)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.StockPurchaseProductName)
@@ -71,16 +74,13 @@
                                     @Html.DisplayFor(modelItem => item.StockPurchaseDate)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.StockPurchaseDueDate)
-                                </td>
-                                <td>
                                     @Html.DisplayFor(modelItem => item.StockPurchaseBuyingTotal)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.StockPurcahseBalance)
                                 </td>
                                 <td>
-                                    <a href="@Url.Action("Edit", "StockPurchase", new { id = item.StockPurchaseId })" data-modal=""><i style="color: brown;" class="fa fa-2x fa-pencil"></i></a>
+                                    <a href="@Url.Action("Details", "StockPurchase", new { id = item.StockPurchaseId })" data-modal=""><i style="color: blue;" class="fa fa-2x fa-file-text-o"></i></a>
                                     <a href="@Url.Action("Edit", "StockPurchase", new { id = item.StockPurchaseId })" data-modal=""><i style="color: brown;" class="fa fa-2x fa-edit"></i></a>
                                     <a href="@Url.Action("Delete", "StockPurchase", new { id = item.StockPurchaseId })" data-modal=""><i style="color: red;" class="fa fa-2x fa-trash"></i></a>
                                 </td>

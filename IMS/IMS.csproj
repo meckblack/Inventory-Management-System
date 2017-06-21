@@ -199,6 +199,10 @@
     <Compile Include="Migrations\201706211342412_EditedStockPurchase.Designer.cs">
       <DependentUpon>201706211342412_EditedStockPurchase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706211450394_EditedStockPurchase2.cs" />
+    <Compile Include="Migrations\201706211450394_EditedStockPurchase2.Designer.cs">
+      <DependentUpon>201706211450394_EditedStockPurchase2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Category.cs" />
@@ -338,6 +342,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706211342412_EditedStockPurchase.resx">
       <DependentUpon>201706211342412_EditedStockPurchase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706211450394_EditedStockPurchase2.resx">
+      <DependentUpon>201706211450394_EditedStockPurchase2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

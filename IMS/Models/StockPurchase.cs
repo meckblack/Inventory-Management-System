@@ -17,7 +17,7 @@ namespace IMS.Models
         
         [Required(ErrorMessage = "Bill No Required")]
         [Display(Name = "Bill Number")]
-        public int StockPurchaseBillNo { get; set; }
+        public string StockPurchaseBillNo { get; set; }
 
         [Required(ErrorMessage = "Product Name Required")]
         [Display(Name = "Product Name")]
