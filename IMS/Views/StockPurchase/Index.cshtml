@@ -1,10 +1,9 @@
-﻿@model IEnumerable<IMS.Models.Stock>
+﻿@model IEnumerable<IMS.Models.StockPurchase>
 
 @{
     ViewBag.Title = "Index";
     var x = 1;
 }
-
 <style>
     td {
         text-align: center;
@@ -16,16 +15,14 @@
         vertical-align: middle;
     }
 </style>
-
 <ul class="breadcrumb">
     <li><a href="@Url.Action("Index", "Dashboard")">Dashboard</a></li>
-    <a href="@Url.Action("Create", "Stock")" class="btn btn-primary btn-sm pull-right" data-modal=""><i style="color: red;" class="fa fa-2x fa-plus"></i> Add</a>
+    <a href="@Url.Action("Create", "StockPurchase")" class="btn btn-primary btn-sm pull-right" data-modal=""><i style="color: red;" class="fa fa-2x fa-plus"></i> Add</a>
 </ul>
-
 <div class="row mt">
     <div class="col-lg-12">
         <div class="content-panel">
-            <h4> STOCKS </h4>
+            <h4> STOCK PURCHASES </h4>
             <h4><i class="fa fa-search-plus pull-right"></i></h4>
             <section id="unseen">
                 <table class="table table-bordered table-striped table-condensed">
@@ -35,19 +32,22 @@
                                 #
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.StockName)
+                                @Html.DisplayNameFor(model => model.StockPurchaseProductName)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.StockCategory)
+                                @Html.DisplayNameFor(model => model.StockPurchaseSupplier)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.StockSupplier)
+                                @Html.DisplayNameFor(model => model.StockPurchaseDate)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.StockBuyingPrice)
+                                @Html.DisplayNameFor(model => model.StockPurchaseDueDate)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.StockSellingPrice)
+                                @Html.DisplayNameFor(model => model.StockPurchaseBuyingTotal)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.StockPurcahseBalance)
                             </th>
                             <th>
                                 Actions
@@ -59,27 +59,30 @@
                         {
                             <tr>
                                 <td>
-                                    @(x++)
+                                    SE@(x++)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.StockName)
+                                    @Html.DisplayFor(modelItem => item.StockPurchaseProductName)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.StockCategory)
+                                    @Html.DisplayFor(modelItem => item.StockPurchaseSupplier)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.StockSupplier)
+                                    @Html.DisplayFor(modelItem => item.StockPurchaseDate)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.StockBuyingPrice)
+                                    @Html.DisplayFor(modelItem => item.StockPurchaseDueDate)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.StockSellingPrice)
+                                    @Html.DisplayFor(modelItem => item.StockPurchaseBuyingTotal)
                                 </td>
                                 <td>
-                                    <a href="@Url.Action("Edit", "Stock", new { id = item.StockId })" data-modal=""><i style="color: sandybrown;" class="fa fa-2x fa-edit"></i></a>
-                                    <a href="@Url.Action("Details", "Stock", new { id = item.StockId })" data-modal=""><i style="color: red;" class="fa fa-2x fa-pencil"></i></a>
-                                    <a href="@Url.Action("Delete", "Stock", new { id = item.StockId })" data-modal=""><i style="color: red;" class="fa fa-2x fa-trash"></i></a>
+                                    @Html.DisplayFor(modelItem => item.StockPurcahseBalance)
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Edit", "StockPurchase", new { id = item.StockPurchaseId })" data-modal=""><i style="color: brown;" class="fa fa-2x fa-pencil"></i></a>
+                                    <a href="@Url.Action("Edit", "StockPurchase", new { id = item.StockPurchaseId })" data-modal=""><i style="color: brown;" class="fa fa-2x fa-edit"></i></a>
+                                    <a href="@Url.Action("Delete", "StockPurchase", new { id = item.StockPurchaseId })" data-modal=""><i style="color: red;" class="fa fa-2x fa-trash"></i></a>
                                 </td>
                             </tr>
                         }
@@ -93,12 +96,11 @@
 <div id='myModal' class='modal fade in'>
     <div class="modal-dialog">
         <div class="modal-content">
-            <div id='myModalContent'>
-
-            </div>
+            <div id='myModalContent'></div>
         </div>
     </div>
 </div>
 
 <script src="~/Scripts/jquery-1.10.2.js"></script>
 <script src="~/Scripts/Appjs/IMS.js"></script>
+

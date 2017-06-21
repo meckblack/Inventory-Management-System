@@ -31,7 +31,7 @@ namespace IMS.Models
         [Display(Name = "Cost Rate")]
         public decimal StockPurchaseCostRate { get; set; }
 
-        [Display(Name = "Product Cost Total")]
+        [Display(Name = "Cost Total(N)")]
         public decimal StockPurchaseBuyingTotal { get; set; }
 
         [Required(ErrorMessage = "Payment Requried")]
@@ -52,5 +52,9 @@ namespace IMS.Models
         [Required(ErrorMessage = "Purchase Due Date Required")]
         [Display(Name = "Due Date")]
         public DateTime StockPurchaseDueDate { get; set; }
+
+        [Required(ErrorMessage = "Stock Puchase Supplier Required")]
+        [Display(Name = "Supplier")]
+        public string StockPurchaseSupplier { get; set; }
     }
 }
