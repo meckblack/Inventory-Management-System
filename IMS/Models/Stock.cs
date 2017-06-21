@@ -30,6 +30,5 @@ namespace IMS.Models
         [Display(Name = "Supplier Name")]
         [Required(ErrorMessage = "Supplier name required")]
         public string StockSupplier { get; set; }
-
     }
 }

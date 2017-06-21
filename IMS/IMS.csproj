@@ -182,36 +182,26 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201706101232446_CustomerSupplier.cs" />
-    <Compile Include="Migrations\201706101232446_CustomerSupplier.Designer.cs">
-      <DependentUpon>201706101232446_CustomerSupplier.cs</DependentUpon>
+    <Compile Include="Migrations\201706211038070_Everything.cs" />
+    <Compile Include="Migrations\201706211038070_Everything.Designer.cs">
+      <DependentUpon>201706211038070_Everything.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201706130455118_AddedStockCateogryModels.cs" />
-    <Compile Include="Migrations\201706130455118_AddedStockCateogryModels.Designer.cs">
-      <DependentUpon>201706130455118_AddedStockCateogryModels.cs</DependentUpon>
+    <Compile Include="Migrations\201706211101245_Next.cs" />
+    <Compile Include="Migrations\201706211101245_Next.Designer.cs">
+      <DependentUpon>201706211101245_Next.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201706130942254_CheckUp.cs" />
-    <Compile Include="Migrations\201706130942254_CheckUp.Designer.cs">
-      <DependentUpon>201706130942254_CheckUp.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706131132472_editedProduct.cs" />
-    <Compile Include="Migrations\201706131132472_editedProduct.Designer.cs">
-      <DependentUpon>201706131132472_editedProduct.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706131352400_editedProduct2.cs" />
-    <Compile Include="Migrations\201706131352400_editedProduct2.Designer.cs">
-      <DependentUpon>201706131352400_editedProduct2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706140657327_EditedProduct3.cs" />
-    <Compile Include="Migrations\201706140657327_EditedProduct3.Designer.cs">
-      <DependentUpon>201706140657327_EditedProduct3.cs</DependentUpon>
+    <Compile Include="Migrations\201706211245061_AddedPurchaseStock.cs" />
+    <Compile Include="Migrations\201706211245061_AddedPurchaseStock.Designer.cs">
+      <DependentUpon>201706211245061_AddedPurchaseStock.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\PaymentMode.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Stock.cs" />
+    <Compile Include="Models\StockPurchase.cs" />
     <Compile Include="Models\Supplier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -327,23 +317,14 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201706101232446_CustomerSupplier.resx">
-      <DependentUpon>201706101232446_CustomerSupplier.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201706211038070_Everything.resx">
+      <DependentUpon>201706211038070_Everything.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706130455118_AddedStockCateogryModels.resx">
-      <DependentUpon>201706130455118_AddedStockCateogryModels.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201706211101245_Next.resx">
+      <DependentUpon>201706211101245_Next.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706130942254_CheckUp.resx">
-      <DependentUpon>201706130942254_CheckUp.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706131132472_editedProduct.resx">
-      <DependentUpon>201706131132472_editedProduct.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706131352400_editedProduct2.resx">
-      <DependentUpon>201706131352400_editedProduct2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706140657327_EditedProduct3.resx">
-      <DependentUpon>201706140657327_EditedProduct3.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201706211245061_AddedPurchaseStock.resx">
+      <DependentUpon>201706211245061_AddedPurchaseStock.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Index";
     var customer = new IMS.Models.Customer();
+    var x = 1;
 }
 <style>
     td {
@@ -49,7 +50,7 @@
                         {
                             <tr>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.SupplierId)
+                                    @(x++)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.SupplierName)
