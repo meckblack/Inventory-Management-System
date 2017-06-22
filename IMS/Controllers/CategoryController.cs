@@ -16,11 +16,15 @@ namespace IMS.Controllers
         private IMS_DB db = new IMS_DB();
 
         // GET: /Category/
-        public ActionResult Index(string sortOrder)
+        public ActionResult Index(string sortOrder, string searchString)
         {
             ViewBag.CategoryNameParm = String .IsNullOrEmpty(sortOrder) ? "CategoryName_desc": "";
             var category = from c in db.Category
                            select c;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                category = category.Where(c => c.CategoryName.ToUpper().Contains(searchString.ToUpper()));
+            }
             switch(sortOrder)
             {
                 case "CategoryName_desc":
