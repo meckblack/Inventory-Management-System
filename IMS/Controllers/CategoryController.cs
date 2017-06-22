@@ -16,9 +16,21 @@ namespace IMS.Controllers
         private IMS_DB db = new IMS_DB();
 
         // GET: /Category/
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder)
         {
-            return View(db.Category.ToList());
+            ViewBag.CategoryNameParm = String .IsNullOrEmpty(sortOrder) ? "CategoryName_desc": "";
+            var category = from c in db.Category
+                           select c;
+            switch(sortOrder)
+            {
+                case "CategoryName_desc":
+                    category = category.OrderByDescending(c => c.CategoryName);
+                    break;
+                default:
+                    category = category.OrderBy(c => c.CategoryName);
+                    break;
+            }
+            return View(category.ToList());
         }
 
         // GET: /Category/Create

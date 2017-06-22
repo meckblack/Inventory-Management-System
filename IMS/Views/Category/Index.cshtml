@@ -36,7 +36,7 @@
                                 S/N
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.CategoryName)
+                                @Html.ActionLink("Category Name", "Index", new { sortOrder = ViewBag.CategoryNameParm })
                             </th>
                             <th>
                                 Number of Products
