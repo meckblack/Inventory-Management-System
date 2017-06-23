@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using IMS.Models;
 using IMS.DAL;
+using PagedList;
 
 namespace IMS.Controllers
 {
@@ -23,6 +24,17 @@ namespace IMS.Controllers
             ViewBag.PurchaseDateParm = sortOrder == "PurchaseDate" ? "PurchaseDate_desc" : "PurchaseDate";
             ViewBag.PurcahseBalance = sortOrder == "PurcahseBalance" ? "PurcahseBalance_desc" : "PurcahseBalance";
             ViewBag.PurcahseBillNoParm = sortOrder == "PurcahseBillNo" ? "PurcahseBillNo_desc" : "PurcahseBillNo";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
 
             var purchase = from p in db.Purchase
                            select p;
@@ -66,7 +78,9 @@ namespace IMS.Controllers
                     purchase = purchase.OrderBy(p => p.PurchaseProductName);
                     break;
             }
-            return View(purchase.ToList());
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+            return View(purchase.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: /Purchase/Details/5

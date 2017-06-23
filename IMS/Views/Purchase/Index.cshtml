@@ -1,4 +1,10 @@
-﻿@model IEnumerable<IMS.Models.Purchase>
+﻿@using IMS.Models
+@using PagedList;
+@using PagedList.Mvc;
+
+@model IPagedList<IMS.Models.Purchase>
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
 
 @{
     ViewBag.Title = "Index";
@@ -51,10 +57,10 @@
                                 @Html.ActionLink("Date", "Index", new { sortOrder = ViewBag.PurchaseDateParm })
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.PurchaseCostTotal)
+                                Cost Total (N)	
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.PurchaseQuantity)
+                                Quantity
                             </th>
                             <th>
                                 @Html.ActionLink("Balance", "Index", new { sortOrder = ViewBag.PurchaseBalanceParm })
@@ -101,6 +107,11 @@
                         }
                     </tbody>
                 </table>
+                <br />
+                <h4>
+                    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+                </h4>
             </section>
         </div><!-- /content-panel -->
     </div><!-- /col-lg-4 -->
