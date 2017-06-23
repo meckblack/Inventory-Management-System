@@ -1,4 +1,11 @@
-﻿@model IEnumerable<IMS.Models.Stock>
+﻿@using IMS.Models
+@using PagedList;
+@using PagedList.Mvc;
+
+@model IPagedList<IMS.Models.Stock>
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+
 
 @{
     ViewBag.Title = "Index";
@@ -50,10 +57,10 @@
                                 @Html.ActionLink("Supplier", "Index", new { sortOrder = ViewBag.StockSupplierParm })
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.StockBuyingPrice)
+                                Buying Price
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.StockSellingPrice)
+                                Selling Price
                             </th>
                             <th>
                                 Actions
@@ -83,14 +90,19 @@
                                     @Html.DisplayFor(modelItem => item.StockSellingPrice)
                                 </td>
                                 <td>
-                                    <a href="@Url.Action("Edit", "Stock", new { id = item.StockId })" data-modal=""><i style="color: sandybrown;" class="fa fa-2x fa-edit"></i></a>
-                                    <a href="@Url.Action("Details", "Stock", new { id = item.StockId })" data-modal=""><i style="color: red;" class="fa fa-2x fa-pencil"></i></a>
+                                    <a href="@Url.Action("Details", "Stock", new { id = item.StockId })" data-modal=""><i style="color: blue;" class="fa fa-2x fa-file-text-o"></i></a>
+                                    <a href="@Url.Action("Details", "Stock", new { id = item.StockId })" data-modal=""><i style="color: brown;" class="fa fa-2x fa-pencil"></i></a>
                                     <a href="@Url.Action("Delete", "Stock", new { id = item.StockId })" data-modal=""><i style="color: red;" class="fa fa-2x fa-trash"></i></a>
                                 </td>
                             </tr>
                         }
                     </tbody>
                 </table>
+                <br />
+                <h4>
+                    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+                </h4>
             </section>
         </div><!-- /content-panel -->
     </div><!-- /col-lg-4 -->

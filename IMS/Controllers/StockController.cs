@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using IMS.Models;
 using IMS.DAL;
+using PagedList;
 
 namespace IMS.Controllers
 {
@@ -17,12 +18,23 @@ namespace IMS.Controllers
 
         // GET: /Stock/
 
-        public ActionResult Index(string sortOrder, string searchString)
+        public ActionResult Index(string sortOrder, string searchString, string currentFilter, int? page)
         {
             ViewBag.StockNameParm = String.IsNullOrEmpty(sortOrder) ? "StockName_desc" : "";
             ViewBag.StockCategoryParm = sortOrder == "StockCategory" ? "StockCategory_desc" : "StockCategory";
             ViewBag.StockSupplierParm = sortOrder == "StockSupplier" ? "StockSupplier_desc" : "StockSupplier";
-            
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
             var stock = from s in db.Stock
                         select s;
 
@@ -53,7 +65,9 @@ namespace IMS.Controllers
                     stock = stock.OrderBy(s => s.StockName);
                     break;
             }
-            return View(stock.ToList());
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+            return View(stock.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: /Stock/Details/5
