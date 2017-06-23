@@ -60,6 +60,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\MySql.ConnectorNET.Entity.6.8.3.2\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -220,6 +226,7 @@
     <Content Include="Content\Image\logo-bd.png" />
     <Content Include="Content\Image\product.jpg" />
     <Content Include="Content\Image\ui-sam.jpg" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\style-responsive.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\table-responsive.css" />
@@ -371,7 +378,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

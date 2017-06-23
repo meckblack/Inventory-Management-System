@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using IMS.Models;
 using IMS.DAL;
+using PagedList;
 
 namespace IMS.Controllers
 {
@@ -16,11 +17,23 @@ namespace IMS.Controllers
         private IMS_DB db = new IMS_DB();
 
         // GET: /Category/
-        public ActionResult Index(string sortOrder, string searchString)
+        public ActionResult Index(string sortOrder, string searchString, string currentFilter, int? page)
         {
             ViewBag.CategoryNameParm = String .IsNullOrEmpty(sortOrder) ? "CategoryName_desc": "";
+            
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
             var category = from c in db.Category
                            select c;
+
             if (!String.IsNullOrEmpty(searchString))
             {
                 category = category.Where(c => c.CategoryName.ToUpper().Contains(searchString.ToUpper()));
@@ -34,7 +47,9 @@ namespace IMS.Controllers
                     category = category.OrderBy(c => c.CategoryName);
                     break;
             }
-            return View(category.ToList());
+            int pageSize = 2;
+            int pageNumber = (page ?? 1);
+            return View(category.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: /Category/Create
