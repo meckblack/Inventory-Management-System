@@ -27,6 +27,12 @@ namespace IMS.Controllers
             var purchase = from p in db.Purchase
                            select p;
 
+            if(!String.IsNullOrEmpty(searchString))
+            {
+                purchase = purchase.Where(p => p.PurchaseBillNo.ToUpper().Contains(searchString.ToUpper()) ||
+                                               p.PurchaseSupplier.ToUpper().Contains(searchString.ToUpper()) || p.PurchaseProductName.ToUpper().Contains(searchString.ToUpper()));
+            }
+
             switch(sortOrder)
             {
                 case "PurchaseProductName_desc":
