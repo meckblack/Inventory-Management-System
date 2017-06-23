@@ -17,13 +17,21 @@ namespace IMS.Controllers
 
         // GET: /Stock/
 
-        public ActionResult Index(string sortOrder)
+        public ActionResult Index(string sortOrder, string searchString)
         {
             ViewBag.StockNameParm = String.IsNullOrEmpty(sortOrder) ? "StockName_desc" : "";
             ViewBag.StockCategoryParm = sortOrder == "StockCategory" ? "StockCategory_desc" : "StockCategory";
             ViewBag.StockSupplierParm = sortOrder == "StockSupplier" ? "StockSupplier_desc" : "StockSupplier";
+            
             var stock = from s in db.Stock
                         select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                stock = stock.Where(s => s.StockName.ToUpper().Contains(searchString.ToUpper()) || s.StockCategory.ToUpper().Contains(searchString.ToUpper()) ||
+                                         s.StockSupplier.ToUpper().Contains(searchString.ToUpper()));
+            }
+
             switch(sortOrder)
             {
                 case "StockName_desc":
