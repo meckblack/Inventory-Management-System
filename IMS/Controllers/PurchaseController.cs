@@ -16,9 +16,51 @@ namespace IMS.Controllers
         private IMS_DB db = new IMS_DB();
 
         // GET: /Purchase/
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string searchString, string currentFilter, int? page)
         {
-            return View(db.Purchase.ToList());
+            ViewBag.PurchaseProductNameParm = String.IsNullOrEmpty(sortOrder) ? "PurchaseProductName_desc" : "";
+            ViewBag.PurchaseSupplierParm = sortOrder == "PurchaseSupplier" ? "PurchaseSupplier_desc" : "PurchaseSupplier";
+            ViewBag.PurchaseDateParm = sortOrder == "PurchaseDate" ? "PurchaseDate_desc" : "PurchaseDate";
+            ViewBag.PurcahseBalance = sortOrder == "PurcahseBalance" ? "PurcahseBalance_desc" : "PurcahseBalance";
+            ViewBag.PurcahseBillNoParm = sortOrder == "PurcahseBillNo" ? "PurcahseBillNo_desc" : "PurcahseBillNo";
+
+            var purchase = from p in db.Purchase
+                           select p;
+
+            switch(sortOrder)
+            {
+                case "PurchaseProductName_desc":
+                    purchase = purchase.OrderByDescending(p => p.PurchaseProductName);
+                    break;
+                case "PurchaseSupplier":
+                    purchase = purchase.OrderBy(p => p.PurchaseSupplier);
+                    break;
+                case "PurchaseSupplier_desc":
+                    purchase = purchase.OrderByDescending(p => p.PurchaseSupplier);
+                    break;
+                case "PurchaseDate":
+                    purchase = purchase.OrderBy(p => p.PurchaseDate);
+                    break;
+                case "PurchaseDate_desc":
+                    purchase = purchase.OrderByDescending(p => p.PurchaseDate);
+                    break;
+                case "PurcahseBalance":
+                    purchase = purchase.OrderBy(p => p.PurcahseBalance);
+                    break;
+                case "PurcahseBalance_desc":
+                    purchase = purchase.OrderByDescending(p => p.PurcahseBalance);
+                    break;
+                case "PurcahseBillNo":
+                    purchase = purchase.OrderBy(p => p.PurchaseBillNo);
+                    break;
+                case "PurcahseBillNo_desc":
+                    purchase = purchase.OrderByDescending(p => p.PurchaseBillNo);
+                    break;
+                default:
+                    purchase = purchase.OrderBy(p => p.PurchaseProductName);
+                    break;
+            }
+            return View(purchase.ToList());
         }
 
         // GET: /Purchase/Details/5

@@ -13,10 +13,12 @@
     th {
         text-align: center;
         vertical-align: middle;
+        color: blue;
     }
 </style>
 <ul class="breadcrumb">
     <li><a href="@Url.Action("Index", "Dashboard")">Dashboard</a></li>
+    <li>Purchase</li>
     <a href="@Url.Action("Create", "Purchase")" class="btn btn-primary btn-sm pull-right" data-modal=""><i style="color: red;" class="fa fa-2x fa-plus"></i> Add</a>
 </ul>
 <div class="row mt">
@@ -32,22 +34,25 @@
                                 #
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.PurchaseBillNo)
+                                @Html.ActionLink("Bill Number", "Index", new { sortOrder = ViewBag.PurcahseBillNoParm })
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.PurchaseProductName)
+                                @Html.ActionLink("Product Name", "Index", new { sortOrder = ViewBag.PurchaseProductNameParm })
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.PurchaseSupplier)
+                                @Html.ActionLink("Supplier", "Index", new { sortOrder = ViewBag.PurchaseSupplierParm })
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.PurchaseDate)
+                                @Html.ActionLink("Date", "Index", new { sortOrder = ViewBag.PurchaseDateParm })
                             </th>
                             <th>
                                 @Html.DisplayNameFor(model => model.PurchaseCostTotal)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.PurcahseBalance)
+                                @Html.DisplayNameFor(model => model.PurchaseQuantity)
+                            </th>
+                            <th>
+                                @Html.ActionLink("Balance", "Index", new { sortOrder = ViewBag.PurchaseBalanceParm })
                             </th>
                             <th>
                                 Actions
@@ -75,6 +80,9 @@
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.PurchaseCostTotal)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PurchaseQuantity)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.PurcahseBalance)
