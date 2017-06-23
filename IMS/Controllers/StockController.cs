@@ -16,9 +16,36 @@ namespace IMS.Controllers
         private IMS_DB db = new IMS_DB();
 
         // GET: /Stock/
-        public ActionResult Index()
+
+        public ActionResult Index(string sortOrder)
         {
-            return View(db.Stock.ToList());
+            ViewBag.StockNameParm = String.IsNullOrEmpty(sortOrder) ? "StockName_desc" : "";
+            ViewBag.StockCategoryParm = sortOrder == "StockCategory" ? "StockCategory_desc" : "StockCategory";
+            ViewBag.StockSupplierParm = sortOrder == "StockSupplier" ? "StockSupplier_desc" : "StockSupplier";
+            var stock = from s in db.Stock
+                        select s;
+            switch(sortOrder)
+            {
+                case "StockName_desc":
+                    stock = stock.OrderByDescending(s => s.StockName);
+                    break;
+                case "StockCategory":
+                    stock = stock.OrderBy(s => s.StockCategory);
+                    break;
+                case "StockCategory_desc":
+                    stock = stock.OrderByDescending(s => s.StockCategory);
+                    break;
+                case "StockSupplier":
+                    stock = stock.OrderBy(s => s.StockSupplier);
+                    break;
+                case "StockSupplier_desc":
+                    stock = stock.OrderByDescending(s => s.StockSupplier);
+                    break;
+                default:
+                    stock = stock.OrderBy(s => s.StockName);
+                    break;
+            }
+            return View(stock.ToList());
         }
 
         // GET: /Stock/Details/5

@@ -14,6 +14,7 @@
     th {
         text-align: center;
         vertical-align: middle;
+        Color: blue;
     }
 </style>
 
@@ -35,13 +36,13 @@
                                 #
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.StockName)
+                                @Html.ActionLink("Stock Name", "Index", new { sortOrder = ViewBag.StockNameParm })
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.StockCategory)
+                                @Html.ActionLink("Category", "Index", new { sortOrder = ViewBag.StockCategoryParm })
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.StockSupplier)
+                                @Html.ActionLink("Supplier", "Index", new { sortOrder = ViewBag.StockSupplierParm })
                             </th>
                             <th>
                                 @Html.DisplayNameFor(model => model.StockBuyingPrice)
