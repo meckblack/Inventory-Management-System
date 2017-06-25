@@ -182,8 +182,9 @@
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\SaleController.cs" />
-    <Compile Include="Controllers\StockController.cs" />
     <Compile Include="Controllers\PurchaseController.cs" />
+    <Compile Include="Controllers\StockController.cs" />
+    <Compile Include="Controllers\StockssController.cs" />
     <Compile Include="Controllers\SupplierController.cs" />
     <Compile Include="DAL\IMS_DB.cs" />
     <Compile Include="DAL\MyInitializer.cs" />
@@ -205,6 +206,18 @@
     <Compile Include="Migrations\201706212208319_AddedSale.cs" />
     <Compile Include="Migrations\201706212208319_AddedSale.Designer.cs">
       <DependentUpon>201706212208319_AddedSale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706231445523_ChangedStockModel.cs" />
+    <Compile Include="Migrations\201706231445523_ChangedStockModel.Designer.cs">
+      <DependentUpon>201706231445523_ChangedStockModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706231450326_Analysis.cs" />
+    <Compile Include="Migrations\201706231450326_Analysis.Designer.cs">
+      <DependentUpon>201706231450326_Analysis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706231456363_NewStock.cs" />
+    <Compile Include="Migrations\201706231456363_NewStock.Designer.cs">
+      <DependentUpon>201706231456363_NewStock.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -349,11 +362,6 @@
     <Content Include="Views\Supplier\Edit.cshtml" />
     <Content Include="Views\Customer\Delete.cshtml" />
     <Content Include="Views\Customer\Create.cshtml" />
-    <Content Include="Views\Stock\Delete.cshtml" />
-    <Content Include="Views\Stock\Details.cshtml" />
-    <Content Include="Views\Stock\Edit.cshtml" />
-    <Content Include="Views\Stock\Index.cshtml" />
-    <Content Include="Views\Stock\Create.cshtml" />
     <Content Include="Views\Category\Create.cshtml" />
     <Content Include="Views\Category\Delete.cshtml" />
     <Content Include="Views\Category\Edit.cshtml" />
@@ -375,6 +383,12 @@
     <Content Include="Views\Sale\Details.cshtml" />
     <Content Include="Views\Sale\Edit.cshtml" />
     <Content Include="Views\Sale\Index.cshtml" />
+    <Content Include="Views\Stock\Create.cshtml" />
+    <Content Include="Views\Stock\Delete.cshtml" />
+    <Content Include="Views\Stock\Details.cshtml" />
+    <Content Include="Views\Stock\Edit.cshtml" />
+    <Content Include="Views\Stock\Index.cshtml" />
+    <Content Include="Views\Stockss\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -395,6 +409,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706212208319_AddedSale.resx">
       <DependentUpon>201706212208319_AddedSale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706231445523_ChangedStockModel.resx">
+      <DependentUpon>201706231445523_ChangedStockModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706231450326_Analysis.resx">
+      <DependentUpon>201706231450326_Analysis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706231456363_NewStock.resx">
+      <DependentUpon>201706231456363_NewStock.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -22,5 +22,7 @@ namespace IMS.Models
         [Required(ErrorMessage = "Phone number field required")]
         [Display(Name = "Phone Number")]
         public string SupplierContact { get; set; }
+
+        public virtual ICollection<Stock> StockVirtual { get; set; }
     }
 }

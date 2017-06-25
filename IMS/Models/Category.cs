@@ -16,5 +16,6 @@ namespace IMS.Models
         public string CategoryName { get; set; }
 
         public virtual ICollection<Product> ProductVirtual { get; set; }
+        public virtual ICollection<Stock> StockVirtual { get; set; }
     }
 }

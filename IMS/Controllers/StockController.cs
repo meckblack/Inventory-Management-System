@@ -40,11 +40,10 @@ namespace IMS.Controllers
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                stock = stock.Where(s => s.StockName.ToUpper().Contains(searchString.ToUpper()) || s.StockCategory.ToUpper().Contains(searchString.ToUpper()) ||
-                                         s.StockSupplier.ToUpper().Contains(searchString.ToUpper()));
+                stock = stock.Where(s => s.StockName.ToUpper().Contains(searchString.ToUpper()));
             }
 
-            switch(sortOrder)
+            switch (sortOrder)
             {
                 case "StockName_desc":
                     stock = stock.OrderByDescending(s => s.StockName);
@@ -88,16 +87,17 @@ namespace IMS.Controllers
         // GET: /Stock/Create
         public ActionResult Create()
         {
+            
             var stock = new Stock();
+            ViewBag.CategoryId = new SelectList(db.Category, "CategoryId", "CategoryName");
+            ViewBag.SupplierId = new SelectList(db.Suppliers, "SupplierId", "SupplierName");
             return PartialView("Create", stock);
         }
 
         // POST: /Stock/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="StockId,StockName,StockCategory,StockBuyingPrice,StockSellingPrice,StockSupplier")] Stock stock)
+        public ActionResult Create(Stock stock, int CategoryId, int SupplierId)
         {
             if (ModelState.IsValid)
             {
@@ -106,6 +106,8 @@ namespace IMS.Controllers
                 return Json(new { success = true });
             }
 
+            ViewBag.CategoryId = new SelectList(db.Category, "CategoryId", "CategoryName", stock.CategoryId);
+            ViewBag.SupplierId = new SelectList(db.Suppliers, "SupplierId", "SupplierName", stock.SupplierId);
             return PartialView("Create", stock);
         }
 
@@ -121,15 +123,16 @@ namespace IMS.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.CategoryId = new SelectList(db.Category, "CategoryId", "CategoryName", stock.CategoryId);
+            ViewBag.SupplierId = new SelectList(db.Suppliers, "SupplierId", "SupplierName", stock.SupplierId);
             return PartialView("Edit", stock);
+
         }
 
         // POST: /Stock/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="StockId,StockName,StockCategory,StockBuyingPrice,StockSellingPrice,StockSupplier")] Stock stock)
+        public ActionResult Edit(Stock stock)
         {
             if (ModelState.IsValid)
             {
@@ -137,6 +140,8 @@ namespace IMS.Controllers
                 db.SaveChanges();
                 return Json(new { success = true });
             }
+            ViewBag.CategoryId = new SelectList(db.Category, "CategoryId", "CategoryName", stock.CategoryId);
+            ViewBag.SupplierId = new SelectList(db.Suppliers, "SupplierId", "SupplierName", stock.SupplierId);
             return PartialView("Edit", stock);
         }
 

@@ -7,13 +7,13 @@ namespace IMS.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.0.2-21211")]
-    public sealed partial class EditedStockPurchase : IMigrationMetadata
+    public sealed partial class NewStock : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(EditedStockPurchase));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(NewStock));
         
         string IMigrationMetadata.Id
         {
-            get { return "201706211342412_EditedStockPurchase"; }
+            get { return "201706231456363_NewStock"; }
         }
         
         string IMigrationMetadata.Source

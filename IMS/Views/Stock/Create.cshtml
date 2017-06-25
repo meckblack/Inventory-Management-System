@@ -11,6 +11,9 @@
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.StockId)
+    @Html.HiddenFor(model => model.CategoryId)
+    @Html.HiddenFor(model => model.SupplierId)
+    
 
      <!--MODAL BODY-->
     <div class="modal-body">
@@ -25,12 +28,12 @@
             <div class="row">
                 <div class="col-md-6 form-group">
                     @Html.LabelFor(model => model.StockCategory, new { @class = "control-label bold" })
-                    @Html.TextBoxFor(model => model.StockCategory, new { @class = "form-control" })
+                    @Html.DropDownList("StockCategory", (IEnumerable<SelectListItem>)ViewBag.CategoryId, new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.StockCategory, "", new { @class = "text-danger" })
                 </div>
                 <div class="col-md-6 form-group">
                     @Html.LabelFor(model => model.StockSupplier, new { @class = "control-label bold" })
-                    @Html.TextBoxFor(model => model.StockSupplier, new { @class = "form-control" })
+                    @Html.DropDownList("StockSupplier", (IEnumerable<SelectListItem>)ViewBag.SupplierId, new { @class = "form-control"})
                     @Html.ValidationMessageFor(model => model.StockSupplier, "", new { @class = "text-danger" })
                 </div>
             </div>
