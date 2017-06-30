@@ -2,14 +2,15 @@
 
 @{
     ViewBag.Title = "Index";
-    var customer = new IMS.Models.Customer();
-    var x = 1;
+    //var customer = new IMS.Models.Customer();
+    //var x = 1;
 }
 <style>
     td {
         text-align: center;
         vertical-align: middle;
     }
+
     th {
         text-align: center;
         vertical-align: middle;
@@ -18,15 +19,13 @@
 <ul class="breadcrumb">
     <li><a href="@Url.Action("Index", "Dashboard")">Dashboard</a></li>
     <a href="@Url.Action("Create", "Customer")" class="btn btn-primary btn-sm pull-right" data-modal=""><i style="color: red;" class="fa fa-2x fa-plus"></i> Add</a>
- </ul>
+</ul>
 
-<div class="row mt">
+@*<div class="row mt">
     <div class="col-lg-12">
-        <div class="content-panel">
-            <h4> CUSTOMERS </h4>
-            <h4><i class="fa fa-search-plus pull-right"></i></h4>
-            <section id="unseen">
-                <table class="table table-bordered table-striped table-condensed">
+        <h4> CUSTOMERS </h4>
+        <div style="width:90%;">
+            <table id="Jdatatable" class="table table-responsive table-bordered" id="myTable">
                     <thead>
                         <tr>
                             <th>
@@ -46,34 +45,62 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>
-                                    @(x++)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.CustomerName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.CustomerAddress)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.CustomerContact)
-                                </td>
-                                <td>
-                                    <a href="@Url.Action("Edit", "Customer", new { id = item.CustomerId })" data-modal=""><i style="color: sandybrown;" class="fa fa-2x fa-edit"></i></a>
-                                    <a href="@Url.Action("Delete", "Customer", new { id = item.CustomerId })" data-modal=""><i style="color: red;" class="fa fa-2x fa-trash"></i></a>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
+                    @*<tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @(x++)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CustomerName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CustomerAddress)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CustomerContact)
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("Edit", "Customer", new { id = item.CustomerId })" data-modal=""><i style="color: sandybrown;" class="fa fa-2x fa-edit"></i></a>
+                                        <a href="@Url.Action("Delete", "Customer", new { id = item.CustomerId })" data-modal=""><i style="color: red;" class="fa fa-2x fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>*@
+@*</table>
+            </div><!-- /content-panel -->
+        </div><!-- /col-lg-4 -->
+    </div>*@<!-- /row -->
+
+<div class="row mt">
+    <div class="col-lg-12">
+        <div class="content-panel">
+            <h4> CUSTOMERS </h4>
+            <section id="unseen">
+                <table class="table table-bordered table-striped table-condensed" id="myTable">
+                    <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CustomerName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CustomerAddress)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CustomerContact)
+                        </th>
+                        <th>
+                            Actions
+                        </th>
+                    </tr>
+                    </thead>
                 </table>
             </section>
-        </div><!-- /content-panel -->
-    </div><!-- /col-lg-4 -->
-</div><!-- /row -->
+        </div>
+    </div>
+</div>
+
 
 <!-- modal placeholder-->
 <div id='myModal' class='modal fade in'>
@@ -86,5 +113,29 @@
     </div>
 </div>
 
-<script src="~/Scripts/jquery-1.12.4.js"></script>
+
+<link href="~/Content/Datatables/css/jquery.dataTables.css" rel="stylesheet" />
 <script src="~/Scripts/Appjs/IMS.js"></script>
+
+@Scripts.Render("~/bundles/jquery")
+<script src="~/Scripts/DataTables/jquery.dataTables.js"></script>
+
+
+<script>
+    $(document)
+        .ready(function () {
+            $('#myTable')
+                .DataTable({
+                    "ajax": {
+                        "url": "/customer/Loaddata",
+                        "type": "GET",
+                        "datatype": "json"
+                    },
+                    "columns": [
+                        { "data": "CustomerName", "autowidth": true },
+                        { "data": "CustomerAddress", "autowidth": true },
+                        { "data": "CustomerContact", "autowidth": true }
+                    ]
+                });
+        });
+</script>
