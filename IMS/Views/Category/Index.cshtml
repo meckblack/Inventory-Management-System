@@ -29,7 +29,7 @@
 </style>
 <ul class="breadcrumb">
     <li><a href="@Url.Action("Index", "Dashboard")">Dashboard</a></li>
-    <a href="@Url.Action("Create", "Category")" class="btn btn-primary btn-sm pull-right" data-modal=""><i style="color: red;" class="fa fa-2x fa-plus"></i> Add</a>
+    <a href="@Url.Action("Create", "Category")" class="btn btn-primary btn-sm pull-right" data-modal=""><i style="color: red;" class="fa fa-plus"></i> Add</a>
 </ul>
 
 
@@ -75,9 +75,9 @@
                                     @db.Product.ToArray().Length
                                 </td>
                                 <td>
-                                    <a href="@Url.Action("Index", "Product", new { id = item.CategoryId })"><i class="fa fa-2x fa-share-square-o"></i></a>
-                                    <a href="@Url.Action("Edit", "Category", new { id = item.CategoryId })" data-modal=""><i style="color: sandybrown;" class="fa fa-2x fa-edit"></i></a>
-                                    <a href="@Url.Action("Delete", "Category", new { id = item.CategoryId })" data-modal=""><i style="color: red;" class="fa fa-2x fa-trash"></i></a>
+                                    <a href="@Url.Action("Index", "Product", new { id = item.CategoryId })"><i class="fa fa-share-square-o"></i></a>
+                                    <a href="@Url.Action("Edit", "Category", new { id = item.CategoryId })" data-modal=""><i style="color: sandybrown;" class="fa fa-edit"></i></a>
+                                    <a href="@Url.Action("Delete", "Category", new { id = item.CategoryId })" data-modal=""><i style="color: red;" class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
                         }

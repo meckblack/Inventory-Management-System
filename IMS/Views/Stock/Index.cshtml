@@ -1,16 +1,11 @@
-﻿@using IMS.Models
-@using PagedList;
-@using PagedList.Mvc;
-
-@model IPagedList<IMS.Models.Stock>
-<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
-
-
+﻿@model IEnumerable<IMS.Models.Stock>
 
 @{
     ViewBag.Title = "Index";
     var x = 1;
 }
+
+
 
 <style>
     td {
@@ -21,46 +16,43 @@
     th {
         text-align: center;
         vertical-align: middle;
-        Color: blue;
+    }
+
+    pdU {
+        padding-right: 10px;
     }
 </style>
-
 <ul class="breadcrumb">
     <li><a href="@Url.Action("Index", "Dashboard")">Dashboard</a></li>
     <a href="@Url.Action("Create", "Stock")" class="btn btn-primary btn-sm pull-right" data-modal=""><i style="color: red;" class="fa fa-2x fa-plus"></i> Add</a>
 </ul>
 
+
 <div class="row mt">
     <div class="col-lg-12">
         <div class="content-panel">
-            <h4> STOCKS </h4>
-            @using (Html.BeginForm())
-            {
-                <h4 class="pull-right">
-                    @Html.TextBox("SearchString", null, new { @class = "form-control", @placeholder = "Search" })
-                </h4>
-            }
+            <h4>STOCKS</h4>
             <section id="unseen">
                 <table class="table table-bordered table-striped table-condensed">
                     <thead>
                         <tr>
                             <th>
-                                #
+                                S/N
                             </th>
                             <th>
-                                @Html.ActionLink("Stock Name", "Index", new { sortOrder = ViewBag.StockNameParm })
+                                @Html.DisplayNameFor(model => model.StockCategory.CategoryName)
                             </th>
                             <th>
-                                @Html.ActionLink("Category", "Index", new { sortOrder = ViewBag.StockCategoryParm })
+                                Supplier Name
                             </th>
                             <th>
-                                @Html.ActionLink("Supplier", "Index", new { sortOrder = ViewBag.StockSupplierParm })
+                                @Html.DisplayNameFor(model => model.StockName)
                             </th>
                             <th>
-                                Buying Price
+                                @Html.DisplayNameFor(model => model.StockBuyingPrice)
                             </th>
                             <th>
-                                Selling Price
+                                @Html.DisplayNameFor(model => model.StockSellingPrice)
                             </th>
                             <th>
                                 Actions
@@ -75,13 +67,13 @@
                                     @(x++)
                                 </td>
                                 <td>
+                                    @Html.DisplayFor(modelItem => item.StockCategory.CategoryName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.StockSupplier.SupplierName)
+                                </td>
+                                <td>
                                     @Html.DisplayFor(modelItem => item.StockName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.StockCategory)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.StockSupplier)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.StockBuyingPrice)
@@ -90,8 +82,7 @@
                                     @Html.DisplayFor(modelItem => item.StockSellingPrice)
                                 </td>
                                 <td>
-                                    <a href="@Url.Action("Details", "Stock", new { id = item.StockId })" data-modal=""><i style="color: blue;" class="fa fa-2x fa-file-text-o"></i></a>
-                                    <a href="@Url.Action("Details", "Stock", new { id = item.StockId })" data-modal=""><i style="color: brown;" class="fa fa-2x fa-pencil"></i></a>
+                                    <a href="@Url.Action("Edit", "Stock", new { id = item.StockId })" data-modal=""><i style="color: sandybrown;" class="fa fa-2x fa-edit"></i></a>
                                     <a href="@Url.Action("Delete", "Stock", new { id = item.StockId })" data-modal=""><i style="color: red;" class="fa fa-2x fa-trash"></i></a>
                                 </td>
                             </tr>
@@ -99,10 +90,10 @@
                     </tbody>
                 </table>
                 <br />
-                <h4>
+                @*<h4>
                     Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
                     @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-                </h4>
+                </h4>*@
             </section>
         </div><!-- /content-panel -->
     </div><!-- /col-lg-4 -->
@@ -120,3 +111,4 @@
 
 <script src="~/Scripts/jquery-1.12.4.js"></script>
 <script src="~/Scripts/Appjs/IMS.js"></script>
+

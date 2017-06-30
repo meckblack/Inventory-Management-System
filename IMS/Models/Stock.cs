@@ -11,7 +11,7 @@ namespace IMS.Models
         [Key]
         public int StockId { get; set; }
 
-        [Display(Name = "Product Name")]
+        [Display(Name = "Stock Name")]
         [Required(ErrorMessage = "Product name required")]
         public string StockName { get; set; }
 

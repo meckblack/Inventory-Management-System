@@ -1,70 +1,63 @@
 ﻿@model IMS.Models.Stock
 
-
-<!--MODAL HEADER-->
-<div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 class="modal-title">Editing @Html.DisplayFor(model => model.StockName)</h3>
-</div>
-
-
-@using (Html.BeginForm("Edit", "Stock", FormMethod.Post))
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    @Html.HiddenFor(model => model.StockId)
-    @Html.HiddenFor(model => model.CategoryId)
-    @Html.HiddenFor(model => model.SupplierId)
     
-     <!--MODAL BODY-->
-    <div class="modal-body">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12 form-group">
-                    @Html.LabelFor(model => model.StockName, new { @class = "control-label" })
-                    @Html.TextBoxFor(model => model.StockName, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.StockName, "", new { @class = "text-danger" })
-                </div>
+    <div class="form-horizontal">
+        <h4>Stock</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.StockId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.StockName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StockName)
+                @Html.ValidationMessageFor(model => model.StockName)
             </div>
-            <div class="row">
-                <div class="col-md-6 form-group">
-                    @Html.LabelFor(model => model.StockCategory, new { @class = "control-label bold" })
-                    @Html.DropDownList("StockCategory", (IEnumerable<SelectListItem>)ViewBag.CategoryId, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.StockCategory, "", new { @class = "text-danger" })
-                </div>
-                <div class="col-md-6 form-group">
-                    @Html.LabelFor(model => model.StockSupplier, new { @class = "control-label bold" })
-                    @Html.DropDownList("StockSupplier", (IEnumerable<SelectListItem>)ViewBag.SupplierId, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.StockSupplier, "", new { @class = "text-danger" })
-                </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.StockBuyingPrice, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StockBuyingPrice)
+                @Html.ValidationMessageFor(model => model.StockBuyingPrice)
             </div>
-            <div class="row">
-                <div class="col-md-6 form-group">
-                    @Html.LabelFor(model => model.StockBuyingPrice, new { @class = "control-label" })
-                    @Html.TextBoxFor(model => model.StockBuyingPrice, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.StockSellingPrice, " ", new { @class = "text-danger" })
-                </div>
-                <div class="col-md-6 form-group">
-                    @Html.LabelFor(model => model.StockSellingPrice, new { @class = "control-label" })
-                    @Html.TextBoxFor(model => model.StockSellingPrice, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.StockSellingPrice, " ", new { @class = "text-danger" })
-                </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.StockSellingPrice, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StockSellingPrice)
+                @Html.ValidationMessageFor(model => model.StockSellingPrice)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CategoryId, "CategoryId", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("CategoryId", String.Empty)
+                @Html.ValidationMessageFor(model => model.CategoryId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SupplierId, "SupplierId", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("SupplierId", String.Empty)
+                @Html.ValidationMessageFor(model => model.SupplierId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>
-
-        <!--MODAL FOOTER-->
-    <div class="modal-footer">
-        <input class="btn btn-primary" type="submit" value="Save" />
-        <button class="btn btn-warning" data-dismiss="modal">Close</button>
-    </div>
-
 }
 
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-<script>
-    $("form").removeData("validator");
-    $("form").removeData("unobtrusiveValidation");
-    $.validator.unobtrusive.parse("form");
-</script>
-
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

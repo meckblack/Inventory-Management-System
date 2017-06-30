@@ -11,7 +11,7 @@
 
 </div>
 
-@using (Html.BeginForm("Create", "Product", FormMethod.Post))
+@using (Html.BeginForm("Edit", "Product", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.ProductId)

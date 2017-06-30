@@ -8,7 +8,6 @@ using System.Web;
 using System.Web.Mvc;
 using IMS.Models;
 using IMS.DAL;
-using PagedList;
 
 namespace IMS.Controllers
 {
@@ -17,77 +16,30 @@ namespace IMS.Controllers
         private IMS_DB db = new IMS_DB();
 
         // GET: /Stock/
-
-        public ActionResult Index(string sortOrder, string searchString, string currentFilter, int? page)
+        public ActionResult Index()
         {
-            ViewBag.StockNameParm = String.IsNullOrEmpty(sortOrder) ? "StockName_desc" : "";
-            ViewBag.StockCategoryParm = sortOrder == "StockCategory" ? "StockCategory_desc" : "StockCategory";
-            ViewBag.StockSupplierParm = sortOrder == "StockSupplier" ? "StockSupplier_desc" : "StockSupplier";
-
-            if (searchString != null)
-            {
-                page = 1;
-            }
-            else
-            {
-                searchString = currentFilter;
-            }
-
-            ViewBag.CurrentFilter = searchString;
-
-            var stock = from s in db.Stock
-                        select s;
-
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                stock = stock.Where(s => s.StockName.ToUpper().Contains(searchString.ToUpper()));
-            }
-
-            switch (sortOrder)
-            {
-                case "StockName_desc":
-                    stock = stock.OrderByDescending(s => s.StockName);
-                    break;
-                case "StockCategory":
-                    stock = stock.OrderBy(s => s.StockCategory);
-                    break;
-                case "StockCategory_desc":
-                    stock = stock.OrderByDescending(s => s.StockCategory);
-                    break;
-                case "StockSupplier":
-                    stock = stock.OrderBy(s => s.StockSupplier);
-                    break;
-                case "StockSupplier_desc":
-                    stock = stock.OrderByDescending(s => s.StockSupplier);
-                    break;
-                default:
-                    stock = stock.OrderBy(s => s.StockName);
-                    break;
-            }
-            int pageSize = 5;
-            int pageNumber = (page ?? 1);
-            return View(stock.ToPagedList(pageNumber, pageSize));
+            var stock = db.Stock.Include(s => s.StockCategory).Include(s => s.StockSupplier);
+            return View(stock.ToList());
         }
 
         // GET: /Stock/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Stock stock = db.Stock.Find(id);
-            if (stock == null)
-            {
-                return HttpNotFound();
-            }
-            return PartialView("Details", stock);
-        }
+        //public ActionResult Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Stock stock = db.Stock.Find(id);
+        //    if (stock == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(stock);
+        //}
 
         // GET: /Stock/Create
         public ActionResult Create()
         {
-            
             var stock = new Stock();
             ViewBag.CategoryId = new SelectList(db.Category, "CategoryId", "CategoryName");
             ViewBag.SupplierId = new SelectList(db.Suppliers, "SupplierId", "SupplierName");
@@ -97,13 +49,13 @@ namespace IMS.Controllers
         // POST: /Stock/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Stock stock, int CategoryId, int SupplierId)
-        {
+        public ActionResult Create([Bind(Include="StockId,StockName,StockBuyingPrice,StockSellingPrice,CategoryId,SupplierId")] Stock stock)
+        {  
             if (ModelState.IsValid)
             {
                 db.Stock.Add(stock);
                 db.SaveChanges();
-                return Json(new { success = true });
+                return Json(new { success = true } );
             }
 
             ViewBag.CategoryId = new SelectList(db.Category, "CategoryId", "CategoryName", stock.CategoryId);
@@ -126,19 +78,18 @@ namespace IMS.Controllers
             ViewBag.CategoryId = new SelectList(db.Category, "CategoryId", "CategoryName", stock.CategoryId);
             ViewBag.SupplierId = new SelectList(db.Suppliers, "SupplierId", "SupplierName", stock.SupplierId);
             return PartialView("Edit", stock);
-
         }
 
         // POST: /Stock/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Stock stock)
+        public ActionResult Edit([Bind(Include="StockId,StockName,StockBuyingPrice,StockSellingPrice,CategoryId,SupplierId")] Stock stock)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(stock).State = EntityState.Modified;
                 db.SaveChanges();
-                return Json(new { success = true });
+                return Json(new { success = true } );
             }
             ViewBag.CategoryId = new SelectList(db.Category, "CategoryId", "CategoryName", stock.CategoryId);
             ViewBag.SupplierId = new SelectList(db.Suppliers, "SupplierId", "SupplierName", stock.SupplierId);
@@ -168,7 +119,7 @@ namespace IMS.Controllers
             Stock stock = db.Stock.Find(id);
             db.Stock.Remove(stock);
             db.SaveChanges();
-            return Json(new { success = true });
+            return Json(new { success = true } );
         }
 
         protected override void Dispose(bool disposing)

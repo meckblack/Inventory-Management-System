@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace IMS.Models
 {
@@ -23,7 +20,10 @@ namespace IMS.Models
         [Display(Name ="Description")]
         [DataType(DataType.MultilineText)]
         public string ProductDescription { get; set; }
+        
         public int CategoryId { get; set; }
         public virtual Category CategoryVirtual { get; set; }
+
+        public ICollection<Purchases> Purchases { get; set; }
     }
 }

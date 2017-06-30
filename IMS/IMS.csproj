@@ -184,7 +184,6 @@
     <Compile Include="Controllers\PurchaseController.cs" />
     <Compile Include="Controllers\SaleController.cs" />
     <Compile Include="Controllers\StockController.cs" />
-    <Compile Include="Controllers\StockssController.cs" />
     <Compile Include="Controllers\SupplierController.cs" />
     <Compile Include="DAL\IMS_DB.cs" />
     <Compile Include="DAL\MyInitializer.cs" />
@@ -676,21 +675,14 @@
     <Content Include="Views\Sale\Details.cshtml" />
     <Content Include="Views\Sale\Edit.cshtml" />
     <Content Include="Views\Sale\Index.cshtml" />
-    <Content Include="Views\Stock\Create.cshtml" />
-    <Content Include="Views\Stock\Delete.cshtml" />
-    <Content Include="Views\Stock\Details.cshtml" />
-    <Content Include="Views\Stock\Edit.cshtml" />
-    <Content Include="Views\Stock\Index.cshtml" />
-    <Content Include="Views\Stockss\Create.cshtml" />
-    <Content Include="Views\Stockss\Delete.cshtml" />
-    <Content Include="Views\Stockss\Details.cshtml" />
-    <Content Include="Views\Stockss\Edit.cshtml" />
-    <Content Include="Views\Stockss\Index.cshtml" />
     <Content Include="Views\Purchase\Create.cshtml" />
     <Content Include="Views\Purchase\Delete.cshtml" />
     <Content Include="Views\Purchase\Details.cshtml" />
     <Content Include="Views\Purchase\Edit.cshtml" />
     <Content Include="Views\Purchase\Index.cshtml" />
+    <Content Include="Views\Stock\Index.cshtml" />
+    <Content Include="Views\Stock\Create.cshtml" />
+    <Content Include="Views\Stock\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
