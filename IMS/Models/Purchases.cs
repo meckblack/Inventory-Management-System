@@ -1,15 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
 namespace IMS.Models
 {
-    public class Purchase
+    public class Purchases
     {
         [Key]
         public int PurchaseId { get; set; }
+
+
+        public int ProductId { get; set; }
+        public virtual Product Product { get; set; }
+
+
+        public int SupplierId { get; set; }
+
+        public virtual Supplier Supplier { get; set; }
+
+        [Required(ErrorMessage = "Bill No Required")]
+        [Display(Name = "Bill Number")]
+        public string PurchaseBillNo { get; set; }
 
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         [Required(ErrorMessage = "Purchase Date Required")]
@@ -17,13 +31,11 @@ namespace IMS.Models
         [DataType(DataType.Date, ErrorMessage = "Input A Valid Date")]
         public DateTime PurchaseDate { get; set; }
 
-        [Required(ErrorMessage = "Bill No Required")]
-        [Display(Name = "Bill Number")]
-        public string PurchaseBillNo { get; set; }
-
-        [Required(ErrorMessage = "Product Name Required")]
-        [Display(Name = "Product Name")]
-        public string PurchaseProductName { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        [Required(ErrorMessage = "Purchase Due Date Required")]
+        [DataType(DataType.Date, ErrorMessage = "Input A Valid Date")]
+        [Display(Name = "Due Date")]
+        public DateTime PurchaseDueDate { get; set; }
 
         [Required(ErrorMessage = "Product Quantity Required")]
         [Display(Name = "Quantity")]
@@ -50,15 +62,5 @@ namespace IMS.Models
         [Required(ErrorMessage = "Purchase Mode Required")]
         [Display(Name = "Payment Mode")]
         public PaymentMode PurchaseMode { get; set; }
-
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        [Required(ErrorMessage = "Purchase Due Date Required")]
-        [DataType(DataType.Date, ErrorMessage = "Input A Valid Date")]
-        [Display(Name = "Due Date")]
-        public DateTime PurchaseDueDate { get; set; }
-
-        [Required(ErrorMessage = "Puchase Supplier Required")]
-        [Display(Name = "Supplier")]
-        public string PurchaseSupplier { get; set; }
     }
 }

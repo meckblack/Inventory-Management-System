@@ -23,6 +23,10 @@ namespace IMS.Models
         [Display(Name = "Phone Number")]
         public string SupplierContact { get; set; }
 
-        public virtual ICollection<Stock> StockVirtual { get; set; }
+        public virtual ICollection<Stock> Stock { get; set; }
+
+        public virtual ICollection<Purchases> Purchases { get; set; }
+
+
     }
 }
