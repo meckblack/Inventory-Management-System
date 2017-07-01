@@ -12,6 +12,7 @@ namespace IMS.DAL
         }
 
         public DbSet<AppUser> AppUser { get; set; }
+        public DbSet<Role> Role { get; set; }
         public DbSet<Admin> admin { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }

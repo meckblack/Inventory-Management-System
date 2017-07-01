@@ -1,0 +1,58 @@
+﻿@model IMS.Models.AppUser
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AppUser</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Role.RoleName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Role.RoleName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AppUserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AppUserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AppUserEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AppUserEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AppUserPassword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AppUserPassword)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AppUserComfirmPassword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AppUserComfirmPassword)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AppUserId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

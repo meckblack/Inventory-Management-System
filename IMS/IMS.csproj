@@ -176,12 +176,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AppUserController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\PurchaseController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\SaleController.cs" />
     <Compile Include="Controllers\StockController.cs" />
     <Compile Include="Controllers\SupplierController.cs" />
@@ -190,9 +192,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201706291617277_Migrate1.cs" />
-    <Compile Include="Migrations\201706291617277_Migrate1.Designer.cs">
-      <DependentUpon>201706291617277_Migrate1.cs</DependentUpon>
+    <Compile Include="Migrations\201707012017260_MigrationOne.cs" />
+    <Compile Include="Migrations\201707012017260_MigrationOne.Designer.cs">
+      <DependentUpon>201707012017260_MigrationOne.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -202,6 +204,7 @@
     <Compile Include="Models\PaymentMode.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Purchases.cs" />
+    <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Sale.cs" />
     <Compile Include="Models\Stock.cs" />
     <Compile Include="Models\Supplier.cs" />
@@ -684,6 +687,16 @@
     <Content Include="Views\Stock\Create.cshtml" />
     <Content Include="Views\Stock\Edit.cshtml" />
     <Content Include="Views\Stock\Delete.cshtml" />
+    <Content Include="Views\Role\Create.cshtml" />
+    <Content Include="Views\Role\Delete.cshtml" />
+    <Content Include="Views\Role\Details.cshtml" />
+    <Content Include="Views\Role\Edit.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\AppUser\Create.cshtml" />
+    <Content Include="Views\AppUser\Delete.cshtml" />
+    <Content Include="Views\AppUser\Details.cshtml" />
+    <Content Include="Views\AppUser\Edit.cshtml" />
+    <Content Include="Views\AppUser\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -695,8 +708,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201706291617277_Migrate1.resx">
-      <DependentUpon>201706291617277_Migrate1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201707012017260_MigrationOne.resx">
+      <DependentUpon>201707012017260_MigrationOne.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
