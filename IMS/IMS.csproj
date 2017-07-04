@@ -659,7 +659,7 @@
     <Content Include="Views\Admin\Edit.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
-    <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\AppUser\Dashboard.cshtml" />
     <Content Include="Views\Customer\Edit.cshtml" />
     <Content Include="Views\Supplier\Index.cshtml" />
     <Content Include="Views\Supplier\Delete.cshtml" />
@@ -706,6 +706,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Dashboard\" />
     <Folder Include="Views\Shared\Partial Views\" />
   </ItemGroup>
   <ItemGroup>

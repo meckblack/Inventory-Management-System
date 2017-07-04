@@ -57,7 +57,7 @@ namespace IMS.Controllers
                 {
                     Session["AppUserId"] = user.AppUserId.ToString();
                     Session["AppUsername"] = user.AppUserName.ToString();
-                    return RedirectToAction("LoggedIn");
+                    return RedirectToAction("Dashboard");
                 }
                 else
                 {
@@ -70,7 +70,7 @@ namespace IMS.Controllers
         }
 
         //Logged In
-        public ActionResult LoggedIn()
+        public ActionResult Dashboard()
         {
             if (Session["AppUserId"] != null)
             {

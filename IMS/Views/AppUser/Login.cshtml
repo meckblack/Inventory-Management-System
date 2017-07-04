@@ -6,6 +6,9 @@
 }
 
 
+@using (Html.BeginForm("Login", "AppUser", FormMethod.Post))
+{
+
 
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
@@ -69,7 +72,7 @@
         </div>
 
     </div>
-
+}
 
 <!--BACKSTRETCH-->
 <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
