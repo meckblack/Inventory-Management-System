@@ -1,0 +1,120 @@
+﻿@model IMS.Models.Sale
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Sale</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SaleDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SaleDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SaleBillNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SaleBillNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SaleProductName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SaleProductName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SaleQuantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SaleQuantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SaleCostRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SaleCostRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SaleCostTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SaleCostTotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SalePayment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SalePayment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SaleDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SaleDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SaleBalance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SaleBalance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SaleMode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SaleMode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SaleDueDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SaleDueDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SaleCustomer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SaleCustomer)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

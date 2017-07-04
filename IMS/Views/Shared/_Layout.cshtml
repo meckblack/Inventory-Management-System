@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title -kingsway</title>
 
-
+    @Scripts.Render("~/bundles/jquery")
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/style.css" rel="stylesheet" />
     <link href="~/Content/style-responsive.css" rel="stylesheet" />
 
     <link href="~/Content/table-responsive.css" rel="stylesheet" />
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-    <link href="~/Content/css/font-awesome.css" rel="stylesheet" />
     <link href="~/Content/to-do.css" rel="stylesheet" />
     <link href="~/Content/zabuto_calendar.css" rel="stylesheet" />
 
@@ -30,16 +29,60 @@
                 <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
             </div>
             <!--logo start-->
-            <a href="index.html" class="logo">
+            <a href="" class="logo">
                 <img src="~/Content/Image/logo-bd.png" width="80" height="24" />
             </a>
             <!--logo end-->
 
-            <div class="top-menu">
-                <ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="login.html">Logout</a></li>
-                </ul>
-            </div>
+            <div class="nav notify-row" id="top_menu">
+                <!--  notification start -->
+                <ul class="nav top-menu">
+                    <!-- settings start -->
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="">
+                            <i class="fa fa-spinner"></i>
+                        </a>
+                        <ul class="dropdown-menu extended tasks-bar">
+                            <div class="notify-arrow notify-arrow-green"></div>
+                            <li>
+                                <p class="green">SETTINGS</p>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index", "Role")">
+                                    <div class="task-info">
+                                        <div class="desc">
+                                            Role Manger
+                                        </div>
+
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index", "Role")">
+                                    <div class="task-info">
+                                        <div class="desc">
+                                            Staff Manger
+                                        </div>
+
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                    <div class="task-info">
+                                        <div class="desc">
+                                            Logout
+                                        </div>
+
+                                    </div>
+                                </a>
+                            </li>
+                            </ul>
+                        
+
+</li>
+                    </ul>
+                </div>
         </header>
         <!--header end-->
         <!--sidebar start-->
@@ -48,7 +91,7 @@
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu" id="nav-accordion">
 
-                    <p class="centered"><a href="profile.html"><img src="~/Content/Image/fr-05.jpg" class="img-circle" width="60"></a></p>
+                    <p class="centered"><a href=""><img src="~/Content/Image/fr-05.jpg" class="img-circle" width="60"></a></p>
 
                     <li class="mt">
                         <a class="active" href="@Url.Action("Index", "Dashboard")">
@@ -144,7 +187,7 @@
         <footer class="site-footer">
             <div class="text-center">
                 &copy; @DateTime.Now.Year - Bizzdesk Global Group
-                <a href="responsive_table.html#" class="go-top">
+                <a href="" class="go-top">
                     <i class="fa fa-angle-up"></i>
                 </a>
             </div>
@@ -154,15 +197,13 @@
 
 
     <!-- js placed at the end of the document so the pages load faster -->
-    <script src="~/Scripts/jquery-1.12.4.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <!--JQuery 1.10.2-->
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="~/Scripts/jquery.dcjqaccordion.2.7.js"></script>
     <script src="~/Scripts/jquery.scrollTo.min.js"></script>
     <script src="~/Scripts/jquery.nicescroll.js"></script>
-    <script src="~/Scripts/sparkline-chart.js"></script>
-
+ 
     <!--common script for all pages-->
     <script src="~/Scripts/common-scripts.js"></script>
     <script src="~/Scripts/jquery.gritter.js"></script>

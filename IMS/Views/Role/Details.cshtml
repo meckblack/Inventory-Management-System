@@ -8,7 +8,7 @@
 
 <div>
     <h4>Role</h4>
-	<hr />
+    <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.RoleName)
@@ -16,6 +16,38 @@
 
         <dd>
             @Html.DisplayFor(model => model.RoleName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CanManageStaff)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CanManageStaff)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CanManageInventory)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CanManageInventory)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CanManageSuppliers)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CanManageSuppliers)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CanManageCustomers)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CanManageCustomers)
         </dd>
 
     </dl>

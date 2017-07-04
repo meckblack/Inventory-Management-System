@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,12 +41,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -195,6 +194,10 @@
     <Compile Include="Migrations\201707012017260_MigrationOne.cs" />
     <Compile Include="Migrations\201707012017260_MigrationOne.Designer.cs">
       <DependentUpon>201707012017260_MigrationOne.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707040235378_MigrationTwo.cs" />
+    <Compile Include="Migrations\201707040235378_MigrationTwo.Designer.cs">
+      <DependentUpon>201707040235378_MigrationTwo.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -421,7 +424,9 @@
     <Content Include="Content\images\sort_desc.png" />
     <Content Include="Content\images\sort_desc_disabled.png" />
     <Content Include="Content\Image\fr-05.jpg" />
+    <Content Include="Content\Image\login-bg.jpg" />
     <Content Include="Content\Image\logo-bd.png" />
+    <Content Include="Content\Image\login.jpg" />
     <Content Include="Content\Image\product.jpg" />
     <Content Include="Content\Image\ui-sam.jpg" />
     <Content Include="Content\PagedList.css" />
@@ -687,19 +692,21 @@
     <Content Include="Views\Stock\Create.cshtml" />
     <Content Include="Views\Stock\Edit.cshtml" />
     <Content Include="Views\Stock\Delete.cshtml" />
-    <Content Include="Views\Role\Create.cshtml" />
     <Content Include="Views\Role\Delete.cshtml" />
-    <Content Include="Views\Role\Details.cshtml" />
-    <Content Include="Views\Role\Edit.cshtml" />
-    <Content Include="Views\Role\Index.cshtml" />
-    <Content Include="Views\AppUser\Create.cshtml" />
+    <Content Include="Views\AppUser\Register.cshtml" />
     <Content Include="Views\AppUser\Delete.cshtml" />
     <Content Include="Views\AppUser\Details.cshtml" />
-    <Content Include="Views\AppUser\Edit.cshtml" />
+    <Content Include="Views\AppUser\Login.cshtml" />
     <Content Include="Views\AppUser\Index.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Role\Create.cshtml" />
+    <Content Include="Views\Role\Edit.cshtml" />
+    <Content Include="Views\Role\Details.cshtml" />
+    <Content Include="Views\Shared\_LoginLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Shared\Partial Views\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
@@ -710,6 +717,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201707012017260_MigrationOne.resx">
       <DependentUpon>201707012017260_MigrationOne.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707040235378_MigrationTwo.resx">
+      <DependentUpon>201707040235378_MigrationTwo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

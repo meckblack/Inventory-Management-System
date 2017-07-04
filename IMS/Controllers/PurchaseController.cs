@@ -8,7 +8,6 @@ using System.Web;
 using System.Web.Mvc;
 using IMS.Models;
 using IMS.DAL;
-using PagedList;
 
 namespace IMS.Controllers
 {
@@ -17,70 +16,10 @@ namespace IMS.Controllers
         private IMS_DB db = new IMS_DB();
 
         // GET: /Purchase/
-        public ActionResult Index(string sortOrder, string searchString, string currentFilter, int? page)
+        public ActionResult Index()
         {
-            ViewBag.PurchaseProductNameParm = String.IsNullOrEmpty(sortOrder) ? "PurchaseProductName_desc" : "";
-            ViewBag.PurchaseSupplierParm = sortOrder == "PurchaseSupplier" ? "PurchaseSupplier_desc" : "PurchaseSupplier";
-            ViewBag.PurchaseDateParm = sortOrder == "PurchaseDate" ? "PurchaseDate_desc" : "PurchaseDate";
-            ViewBag.PurcahseBalance = sortOrder == "PurcahseBalance" ? "PurcahseBalance_desc" : "PurcahseBalance";
-            ViewBag.PurcahseBillNoParm = sortOrder == "PurcahseBillNo" ? "PurcahseBillNo_desc" : "PurcahseBillNo";
-
-            if (searchString != null)
-            {
-                page = 1;
-            }
-            else
-            {
-                searchString = currentFilter;
-            }
-
-            ViewBag.CurrentFilter = searchString;
-
-            var purchase = from p in db.Purchase
-                           select p;
-
-            if(!String.IsNullOrEmpty(searchString))
-            {
-                purchase = purchase.Where(p => p.PurchaseBillNo.ToUpper().Contains(searchString.ToUpper()) ||
-                                               p.PurchaseSupplier.ToUpper().Contains(searchString.ToUpper()) || p.PurchaseProductName.ToUpper().Contains(searchString.ToUpper()));
-            }
-
-            switch(sortOrder)
-            {
-                case "PurchaseProductName_desc":
-                    purchase = purchase.OrderByDescending(p => p.PurchaseProductName);
-                    break;
-                case "PurchaseSupplier":
-                    purchase = purchase.OrderBy(p => p.PurchaseSupplier);
-                    break;
-                case "PurchaseSupplier_desc":
-                    purchase = purchase.OrderByDescending(p => p.PurchaseSupplier);
-                    break;
-                case "PurchaseDate":
-                    purchase = purchase.OrderBy(p => p.PurchaseDate);
-                    break;
-                case "PurchaseDate_desc":
-                    purchase = purchase.OrderByDescending(p => p.PurchaseDate);
-                    break;
-                case "PurcahseBalance":
-                    purchase = purchase.OrderBy(p => p.PurcahseBalance);
-                    break;
-                case "PurcahseBalance_desc":
-                    purchase = purchase.OrderByDescending(p => p.PurcahseBalance);
-                    break;
-                case "PurcahseBillNo":
-                    purchase = purchase.OrderBy(p => p.PurchaseBillNo);
-                    break;
-                case "PurcahseBillNo_desc":
-                    purchase = purchase.OrderByDescending(p => p.PurchaseBillNo);
-                    break;
-                default:
-                    purchase = purchase.OrderBy(p => p.PurchaseProductName);
-                    break;
-            }
-            int pageSize = 5;
-            int pageNumber = (page ?? 1);
-            return View(purchase.ToPagedList(pageNumber, pageSize));
+            var purchases = db.Purchases.Include(p => p.Supplier);
+            return View(purchases.ToList());
         }
 
         // GET: /Purchase/Details/5
@@ -90,34 +29,37 @@ namespace IMS.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Purchase purchase = db.Purchase.Find(id);
-            if (purchase == null)
+            Purchases purchases = db.Purchases.Find(id);
+            if (purchases == null)
             {
                 return HttpNotFound();
             }
-            return PartialView("Details", purchase);
+            return View(purchases);
         }
 
         // GET: /Purchase/Create
         public ActionResult Create()
         {
-            var purchase = new Purchase();
-            return PartialView("Create", purchase);
+            ViewBag.SupplierId = new SelectList(db.Suppliers, "SupplierId", "SupplierName");
+            return View();
         }
 
         // POST: /Purchase/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Purchase purchase)
+        public ActionResult Create([Bind(Include="PurchaseId,ProductId,SupplierId,PurchaseBillNo,PurchaseDate,PurchaseDueDate,PurchaseQuantity,PurchaseCostRate,PurchaseCostTotal,PurchasePayment,PurchaseDescription,PurcahseBalance,PurchaseMode")] Purchases purchases)
         {
             if (ModelState.IsValid)
             {
-                db.Purchase.Add(purchase);
+                db.Purchases.Add(purchases);
                 db.SaveChanges();
-                return Json(new { success = true });
+                return RedirectToAction("Index");
             }
 
-            return PartialView("Create", purchase);
+            ViewBag.SupplierId = new SelectList(db.Suppliers, "SupplierId", "SupplierName", purchases.SupplierId);
+            return View(purchases);
         }
 
         // GET: /Purchase/Edit/5
@@ -127,26 +69,30 @@ namespace IMS.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Purchase purchase = db.Purchase.Find(id);
-            if (purchase == null)
+            Purchases purchases = db.Purchases.Find(id);
+            if (purchases == null)
             {
                 return HttpNotFound();
             }
-            return PartialView("Edit", purchase);
+            ViewBag.SupplierId = new SelectList(db.Suppliers, "SupplierId", "SupplierName", purchases.SupplierId);
+            return View(purchases);
         }
 
         // POST: /Purchase/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Purchase purchase)
+        public ActionResult Edit([Bind(Include="PurchaseId,ProductId,SupplierId,PurchaseBillNo,PurchaseDate,PurchaseDueDate,PurchaseQuantity,PurchaseCostRate,PurchaseCostTotal,PurchasePayment,PurchaseDescription,PurcahseBalance,PurchaseMode")] Purchases purchases)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(purchase).State = EntityState.Modified;
+                db.Entry(purchases).State = EntityState.Modified;
                 db.SaveChanges();
-                return Json(new { success = true });
+                return RedirectToAction("Index");
             }
-            return PartialView("Edit", purchase);
+            ViewBag.SupplierId = new SelectList(db.Suppliers, "SupplierId", "SupplierName", purchases.SupplierId);
+            return View(purchases);
         }
 
         // GET: /Purchase/Delete/5
@@ -156,12 +102,12 @@ namespace IMS.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Purchase purchase = db.Purchase.Find(id);
-            if (purchase == null)
+            Purchases purchases = db.Purchases.Find(id);
+            if (purchases == null)
             {
                 return HttpNotFound();
             }
-            return PartialView("Delete", purchase);
+            return View(purchases);
         }
 
         // POST: /Purchase/Delete/5
@@ -169,10 +115,10 @@ namespace IMS.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Purchase purchase = db.Purchase.Find(id);
-            db.Purchase.Remove(purchase);
+            Purchases purchases = db.Purchases.Find(id);
+            db.Purchases.Remove(purchases);
             db.SaveChanges();
-            return Json(new { success = true });
+            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)

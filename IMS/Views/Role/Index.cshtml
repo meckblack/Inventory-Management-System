@@ -14,6 +14,18 @@
         <th>
             @Html.DisplayNameFor(model => model.RoleName)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CanManageStaff)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CanManageInventory)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CanManageSuppliers)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CanManageCustomers)
+        </th>
         <th></th>
     </tr>
 
@@ -21,6 +33,18 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.RoleName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CanManageStaff)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CanManageInventory)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CanManageSuppliers)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CanManageCustomers)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.RoleId }) |

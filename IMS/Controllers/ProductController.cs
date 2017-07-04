@@ -52,7 +52,7 @@ namespace IMS.Controllers
         // POST: /Product/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="ProductId,ProductName,ProductQuantity,ProductDescription,CategoryId")] Product product)
+        public ActionResult Create([Bind(Include = "ProductId,ProductName,ProductQuantity,ProductDescription,CategoryId")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +90,7 @@ namespace IMS.Controllers
         // POST: /Product/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="ProductId,ProductName,ProductQuantity,ProductDescription,CategoryId")] Product product)
+        public ActionResult Edit([Bind(Include = "ProductId,ProductName,ProductQuantity,ProductDescription,CategoryId")] Product product)
         {
             if (ModelState.IsValid)
             {

@@ -22,6 +22,8 @@ namespace IMS.Models
 
         [Required(ErrorMessage = "Comfirm Password field required")]
         [Compare("AppUserPassword", ErrorMessage = "Passwords doesn't match")]
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm Password")]
         public string AppUserComfirmPassword { get; set; }
 
         public int RoleId { get; set; }

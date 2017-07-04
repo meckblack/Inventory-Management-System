@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
-using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using IMS.Models;
 using IMS.DAL;
+using IMS.Models;
 
 namespace IMS.Controllers
 {
@@ -15,110 +10,77 @@ namespace IMS.Controllers
     {
         private IMS_DB db = new IMS_DB();
 
-        // GET: /AppUser/
+        // GET: AppUser
         public ActionResult Index()
         {
-            var appuser = db.AppUser.Include(a => a.Role);
-            return View(appuser.ToList());
+            var appUser = db.AppUser.Include(a => a.Role);
+            return View(db.AppUser.ToList());
         }
+        
 
-        // GET: /AppUser/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            AppUser appuser = db.AppUser.Find(id);
-            if (appuser == null)
-            {
-                return HttpNotFound();
-            }
-            return View(appuser);
-        }
-
-        // GET: /AppUser/Create
-        public ActionResult Create()
+        // GET: AppUser/Register
+        public ActionResult Register()
         {
             ViewBag.RoleId = new SelectList(db.Role, "RoleId", "RoleName");
             return View();
         }
 
-        // POST: /AppUser/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: AppUser/Register
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="AppUserId,AppUserName,AppUserEmail,AppUserPassword,AppUserComfirmPassword,RoleId")] AppUser appuser)
+        public ActionResult Register([Bind(Include = "AppUserId,AppUserName,AppUserEmail,AppUserPassword,AppUserComfirmPassword,RoleId")] AppUser appUser)
         {
             if (ModelState.IsValid)
             {
-                db.AppUser.Add(appuser);
+                db.AppUser.Add(appUser);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.RoleId = new SelectList(db.Role, "RoleId", "RoleName", appuser.RoleId);
-            return View(appuser);
+            ViewBag.RoleId = new SelectList(db.Role, "RoleId", "RoleName", appUser.RoleId);
+            return View(appUser);
         }
 
-        // GET: /AppUser/Edit/5
-        public ActionResult Edit(int? id)
+        // GET: AppUser/Login
+        public ActionResult Login()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            AppUser appuser = db.AppUser.Find(id);
-            if (appuser == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.RoleId = new SelectList(db.Role, "RoleId", "RoleName", appuser.RoleId);
-            return View(appuser);
+            return View();
         }
 
-        // POST: /AppUser/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: AppUser/Login
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="AppUserId,AppUserName,AppUserEmail,AppUserPassword,AppUserComfirmPassword,RoleId")] AppUser appuser)
+        public ActionResult Login(AppUser appUser)
         {
-            if (ModelState.IsValid)
-            {
-                db.Entry(appuser).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.RoleId = new SelectList(db.Role, "RoleId", "RoleName", appuser.RoleId);
-            return View(appuser);
+            var user = db.AppUser.Single(ap => ap.AppUserName == appUser.AppUserName && ap.AppUserPassword == appUser.AppUserPassword);
+                if (user != null)
+                {
+                    Session["AppUserId"] = user.AppUserId.ToString();
+                    Session["AppUsername"] = user.AppUserName.ToString();
+                    return RedirectToAction("LoggedIn");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Password doesnt match the Username");
+                }
+           
+
+            
+            return View();
         }
 
-        // GET: /AppUser/Delete/5
-        public ActionResult Delete(int? id)
+        //Logged In
+        public ActionResult LoggedIn()
         {
-            if (id == null)
+            if (Session["AppUserId"] != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return View();
             }
-            AppUser appuser = db.AppUser.Find(id);
-            if (appuser == null)
+            else
             {
-                return HttpNotFound();
+                return RedirectToAction("Login");
             }
-            return View(appuser);
-        }
-
-        // POST: /AppUser/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            AppUser appuser = db.AppUser.Find(id);
-            db.AppUser.Remove(appuser);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            
         }
 
         protected override void Dispose(bool disposing)

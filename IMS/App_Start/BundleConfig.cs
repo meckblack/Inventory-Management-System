@@ -26,6 +26,21 @@ namespace IMS
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
+                      "~/Scripts/jquery-ui-1.12.1.js"));
+
+            bundles.Add(new ScriptBundle("~/Scripts/jquery-1.12.4").Include(
+                      "~/Scripts/jquery-1.12.4.js"));
+              
+            bundles.Add(new StyleBundle("~/Content/cssjqryUi").Include(
+                      "~/Content/jquery-ui.css"));  
+
+            bundles.Add(new ScriptBundle("~/bundles/jquery.dataTables").Include(
+                      "~/Scripts/Datatable/jquery.dataTables.js"));
+
+            bundles.Add(new StyleBundle("~/Content/DataTables").Include(
+                      "~/Content/Datatables/css/jquery.dataTable.css"));
         }
     }
 }
