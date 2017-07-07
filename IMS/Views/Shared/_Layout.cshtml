@@ -21,6 +21,13 @@
 
 </head>
 <body>
+    @*@{
+            @using IMS.DAL;
+        @using IMS.Models;
+        IMS_DB db = new IMS_DB();
+        var admin = 1;
+        var checker = db.AppUser.Where(ap => ap.RoleId == admin);
+    }*@
     <section id="container">
 
         <!--header start-->
@@ -33,6 +40,11 @@
                 <img src="~/Content/Image/logo-bd.png" width="80" height="24" />
             </a>
             <!--logo end-->
+            
+            @*@if(checker = )
+            {
+
+            }*@
 
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->
@@ -58,7 +70,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="@Url.Action("Index", "Role")">
+                                <a href="@Url.Action("Index", "AppUser")">
                                     <div class="task-info">
                                         <div class="desc">
                                             Staff Manger
@@ -80,8 +92,8 @@
                             </ul>
                         
 
-</li>
-                    </ul>
+                    </li>
+                </ul>
                 </div>
         </header>
         <!--header end-->

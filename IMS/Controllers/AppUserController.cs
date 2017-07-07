@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web.Mvc;
 using IMS.DAL;
 using IMS.Models;
+using System;
 
 namespace IMS.Controllers
 {
@@ -33,6 +34,7 @@ namespace IMS.Controllers
             if (ModelState.IsValid)
             {
                 db.AppUser.Add(appUser);
+                appUser.RoleId = Convert.ToInt32(Session["role"]);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -52,19 +54,17 @@ namespace IMS.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(AppUser appUser)
         {
-            var user = db.AppUser.Single(ap => ap.AppUserName == appUser.AppUserName && ap.AppUserPassword == appUser.AppUserPassword);
-                if (user != null)
-                {
-                    Session["AppUserId"] = user.AppUserId.ToString();
-                    Session["AppUsername"] = user.AppUserName.ToString();
-                    return RedirectToAction("Dashboard");
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Password doesnt match the Username");
-                }
-           
-
+            var user = db.AppUser.Where(ap => ap.AppUserName == appUser.AppUserName && ap.AppUserPassword == appUser.AppUserPassword).SingleOrDefault();
+            if (user != null)
+            {
+                Session["AppUserId"] = user.AppUserId.ToString();
+                Session["AppUsername"] = user.AppUserName.ToString();
+                return RedirectToAction("Dashboard");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Password doesnt match the Username");
+            }
             
             return View();
         }
@@ -78,7 +78,7 @@ namespace IMS.Controllers
             }
             else
             {
-                return RedirectToAction("Login");
+                return RedirectToAction("Dashboard");
             }
             
         }

@@ -25,7 +25,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CanManageStaff, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CanManageStaff)
+                @Html.CheckBoxFor(model => model.CanManageStaff)
                 @Html.ValidationMessageFor(model => model.CanManageStaff)
             </div>
         </div>
@@ -33,7 +33,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CanManageInventory, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CanManageInventory)
+                @Html.CheckBoxFor(model => model.CanManageInventory)
                 @Html.ValidationMessageFor(model => model.CanManageInventory)
             </div>
         </div>
@@ -41,7 +41,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CanManageSuppliers, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CanManageSuppliers)
+                @Html.CheckBoxFor(model => model.CanManageSuppliers, new { @class="form-control"})
                 @Html.ValidationMessageFor(model => model.CanManageSuppliers)
             </div>
         </div>
@@ -49,7 +49,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CanManageCustomers, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CanManageCustomers)
+                @Html.CheckBoxFor(model => model.CanManageCustomers)
                 @Html.ValidationMessageFor(model => model.CanManageCustomers)
             </div>
         </div>

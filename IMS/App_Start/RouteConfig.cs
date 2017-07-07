@@ -18,7 +18,7 @@ namespace IMS
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Dashboard", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "AppUser", action = "Login", id = UrlParameter.Optional }
             );
         }
     }
