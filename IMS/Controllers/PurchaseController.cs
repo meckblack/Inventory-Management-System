@@ -18,7 +18,7 @@ namespace IMS.Controllers
         // GET: /Purchase/
         public ActionResult Index()
         {
-            var purchases = db.Purchases.Include(p => p.Supplier);
+            var purchases = db.Purchases;//.Include(p => p.Supplier);
             return View(purchases.ToList());
         }
 

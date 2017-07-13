@@ -35,6 +35,8 @@ namespace IMS.Controllers
             {
                 db.AppUser.Add(appUser);
                 appUser.RoleId = Convert.ToInt32(Session["role"]);
+
+                
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -59,6 +61,9 @@ namespace IMS.Controllers
             {
                 Session["AppUserId"] = user.AppUserId.ToString();
                 Session["AppUsername"] = user.AppUserName.ToString();
+                Session["mgnStaff"] = user.Role.CanManageStaff;
+                Session["mgnSupplier"] = user.Role.CanManageCustomers;
+
                 return RedirectToAction("Dashboard");
             }
             else

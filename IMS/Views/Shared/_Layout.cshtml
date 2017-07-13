@@ -21,13 +21,17 @@
 
 </head>
 <body>
-    @*@{
-            @using IMS.DAL;
-        @using IMS.Models;
+    @using IMS.Models;
+    @using IMS.DAL;
+    @{
+
+
         IMS_DB db = new IMS_DB();
-        var admin = 1;
-        var checker = db.AppUser.Where(ap => ap.RoleId == admin);
-    }*@
+        var checkeee = Convert.ToBoolean(Session["mgnSupplier"]);
+        var checkee = Convert.ToBoolean(Session["mgnStaff"]);
+
+
+    }
     <section id="container">
 
         <!--header start-->
@@ -41,11 +45,8 @@
             </a>
             <!--logo end-->
             
-            @*@if(checker = )
+            @if (checkee == true)
             {
-
-            }*@
-
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->
                 <ul class="nav top-menu">
@@ -95,7 +96,10 @@
                     </li>
                 </ul>
                 </div>
+            }
+            else { }
         </header>
+
         <!--header end-->
         <!--sidebar start-->
         <aside>
@@ -118,14 +122,18 @@
                             <span>Categories</span>
                         </a>
                     </li>
+                    @if(checkeee == true)
+                    {
 
+                    
                     <li class="sub-menu">
                         <a href="@Url.Action("Index", "Customer")">
                             <i class="fa fa-desktop"></i>
                             <span>Customers</span>
                         </a>
                     </li>
-
+                    }
+                    else{ }
                     <li class="sub-menu">
                         <a href="@Url.Action("Index", "Supplier")">
                             <i class="fa fa-cogs"></i>
