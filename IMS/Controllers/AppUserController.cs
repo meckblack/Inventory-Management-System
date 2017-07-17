@@ -59,10 +59,9 @@ namespace IMS.Controllers
             var user = db.AppUser.Where(ap => ap.AppUserName == appUser.AppUserName && ap.AppUserPassword == appUser.AppUserPassword).SingleOrDefault();
             if (user != null)
             {
-                Session["AppUserId"] = user.AppUserId.ToString();
+                Session["AppUserId"] = user.AppUserId;
                 Session["AppUsername"] = user.AppUserName.ToString();
-                Session["mgnStaff"] = user.Role.CanManageStaff;
-                Session["mgnSupplier"] = user.Role.CanManageCustomers;
+                Session["UserRole"] = user.Role;
 
                 return RedirectToAction("Dashboard");
             }
