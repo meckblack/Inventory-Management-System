@@ -14,18 +14,18 @@ namespace IMS.Controllers
         // GET: /Customer/
         public ActionResult Index()
         {
-            return View();
+            return View(db.Customers.ToList());
         }
 
         //Write action for return database data
-        public ActionResult Loaddata()
-        {
-            using (IMS_DB db = new IMS_DB())
-            {
-                var data = db.Customers.OrderBy(c => c.CustomerName).ToList();
-                return Json(new {data = data}, JsonRequestBehavior.AllowGet);
-            }
-        }
+        //public ActionResult Loaddata()
+        //{
+        //    using (IMS_DB db = new IMS_DB())
+        //    {
+        //        var data = db.Customers.OrderBy(c => c.CustomerName).ToList();
+        //        return Json(new {data = data}, JsonRequestBehavior.AllowGet);
+        //    }
+        //}
 
 
         // GET: /Customer/Details/5
