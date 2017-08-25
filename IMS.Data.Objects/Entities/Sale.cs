@@ -1,10 +1,9 @@
-﻿using System;
+﻿using IMS.Data.Objects.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
-namespace IMS.Models
+namespace IMS.Data.Objects.Entities
 {
     public class Sale
     {

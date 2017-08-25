@@ -1,21 +1,21 @@
-﻿using System;
+﻿using IMS.Data.Objects.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace IMS.Models
+namespace IMS.Data.Objects.Entities
 {
     public class Purchases
     {
         [Key]
         public int PurchaseId { get; set; }
-
-
+        
         public int ProductId { get; set; }
-        public virtual Product Product { get; set; }
 
+        public virtual Product Product { get; set; }
 
         public int SupplierId { get; set; }
 

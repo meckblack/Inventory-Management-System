@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace IMS.Models
+namespace IMS.Data.Objects.Entities
 {
     public class AppUser
     {

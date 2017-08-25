@@ -1,12 +1,14 @@
 ﻿using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using IMS.Models;
+using IMS.Data.Objects;
+using IMS.Data.Objects.Entities;
 
-namespace IMS.DAL
+namespace IMS.Data.DbConnections.DAL
 {
     public class IMS_DB : DbContext
     {
-        public IMS_DB() : base("MyIMS_DB")
+        public IMS_DB()
+            : base("MyIMS_DB")
         {
             Database.SetInitializer<IMS_DB>(new MyInitializer());
         }
@@ -19,7 +21,7 @@ namespace IMS.DAL
         public DbSet<Category> Category { get; set; }
         public DbSet<Stock> Stock { get; set; }
         public DbSet<Product> Product { get; set; }
-        public DbSet<Purchases> Purchases { get; set; }    
+        public DbSet<Purchases> Purchases { get; set; }
         public DbSet<Sale> Sale { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

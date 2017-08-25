@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 
-namespace IMS.Models
+namespace IMS.Data.Objects.Entities
 {
     public class Customer
     {

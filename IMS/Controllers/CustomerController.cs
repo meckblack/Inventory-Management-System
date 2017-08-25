@@ -2,8 +2,8 @@
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-using IMS.Models;
-using IMS.DAL;
+using IMS.Data.Objects.Entities;
+using IMS.Data.DbConnections.DAL;
 
 namespace IMS.Controllers
 {

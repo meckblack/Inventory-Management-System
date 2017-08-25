@@ -1,15 +1,15 @@
 ﻿using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
-using IMS.DAL;
-using IMS.Models;
+using IMS.Data.Objects.Entities;
+using IMS.Data.DbConnections.DAL;
 using System;
 
 namespace IMS.Controllers
 {
     public class AppUserController : Controller
     {
-        private IMS_DB db = new IMS_DB();
+        private IMS.Data.DbConnections.DAL.IMS_DB db = new IMS.Data.DbConnections.DAL.IMS_DB();
 
         // GET: AppUser
         public ActionResult Index()

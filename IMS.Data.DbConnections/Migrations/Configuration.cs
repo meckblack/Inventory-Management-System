@@ -1,11 +1,11 @@
-namespace IMS.Migrations
+namespace IMS.Data.DbConnections.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<IMS.DAL.IMS_DB>
+    internal sealed class Configuration : DbMigrationsConfiguration<IMS.Data.DbConnections.DAL.IMS_DB>
     {
         public Configuration()
         {
@@ -13,7 +13,7 @@ namespace IMS.Migrations
             SetSqlGenerator("MySql.Data.MySqlClient", new MySql.Data.Entity.MySqlMigrationSqlGenerator());
         }
 
-        protected override void Seed(IMS.DAL.IMS_DB context)
+        protected override void Seed(IMS.Data.DbConnections.DAL.IMS_DB context)
         {
             //  This method will be called after migrating to the latest version.
 
