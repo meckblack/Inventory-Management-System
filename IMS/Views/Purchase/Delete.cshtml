@@ -1,5 +1,5 @@
 ﻿
-@model IMS.Models.Purchase
+@model IMS.Data.Objects.Entities.Purchases
 
 @{
     ViewBag.Title = "Delete";
@@ -13,8 +13,8 @@
 
 <!--MODAL BODY-->
 <div class="modal-body">
-    <h4 class="text-center"><strong> Product Name: </strong> @Html.DisplayFor(model => model.PurchaseProductName) </h4>
-    <h4 class="text-center"><strong> Supplier: </strong> @Html.DisplayFor(model => model.PurchaseSupplier) </h4>
+    <h4 class="text-center"><strong> Product Name: </strong> @Html.DisplayFor(model => model.PurcahseBalance) </h4>
+    <h4 class="text-center"><strong> Supplier: </strong> @Html.DisplayFor(model => model.PurchaseCostRate) </h4>
     <h4 class="text-center"><strong> Quantity: </strong> @Html.DisplayFor(model => model.PurchaseQuantity) </h4>
     
     
