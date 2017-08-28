@@ -17,39 +17,9 @@ namespace IMS.Controllers
         private IMS_DB db = new IMS_DB();
 
         // GET: /Category/
-        public ActionResult Index(string sortOrder, string searchString, string currentFilter, int? page)
+        public ActionResult Index()
         {
-            ViewBag.CategoryNameParm = String .IsNullOrEmpty(sortOrder) ? "CategoryName_desc": "";
-            
-            if (searchString != null)
-            {
-                page = 1;
-            }
-            else
-            {
-                searchString = currentFilter;
-            }
-
-            ViewBag.CurrentFilter = searchString;
-            var category = from c in db.Category
-                           select c;
-
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                category = category.Where(c => c.CategoryName.ToUpper().Contains(searchString.ToUpper()));
-            }
-            switch(sortOrder)
-            {
-                case "CategoryName_desc":
-                    category = category.OrderByDescending(c => c.CategoryName);
-                    break;
-                default:
-                    category = category.OrderBy(c => c.CategoryName);
-                    break;
-            }
-            int pageSize = 5;
-            int pageNumber = (page ?? 1);
-            return View(category.ToPagedList(pageNumber, pageSize));
+            return View(db.Category.ToList());
         }
 
         // GET: /Category/Create

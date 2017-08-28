@@ -21,8 +21,8 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
 </head>
 <body>
-    @using IMS.Models;
-    @using IMS.DAL;
+    @using IMS.Data.Objects.Entities;
+    @using IMS.Data.DbConnections.DAL;
     @{
         var role = Session["UserRole"] as Role;
     }
