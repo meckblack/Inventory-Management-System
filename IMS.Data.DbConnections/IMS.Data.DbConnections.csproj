@@ -56,18 +56,6 @@
   <ItemGroup>
     <Compile Include="DAL\IMS_DB.cs" />
     <Compile Include="DAL\MyInitializer.cs" />
-    <Compile Include="Migrations\201707012017260_MigrationOne.cs" />
-    <Compile Include="Migrations\201707012017260_MigrationOne.Designer.cs">
-      <DependentUpon>201707012017260_MigrationOne.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707040235378_MigrationTwo.cs" />
-    <Compile Include="Migrations\201707040235378_MigrationTwo.Designer.cs">
-      <DependentUpon>201707040235378_MigrationTwo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707041226345_MigrationThree.cs" />
-    <Compile Include="Migrations\201707041226345_MigrationThree.Designer.cs">
-      <DependentUpon>201707041226345_MigrationThree.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -76,17 +64,6 @@
       <Project>{a43163f4-a5d7-4779-9955-bd7914e7ce94}</Project>
       <Name>IMS.Data.Objects</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201707012017260_MigrationOne.resx">
-      <DependentUpon>201707012017260_MigrationOne.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707040235378_MigrationTwo.resx">
-      <DependentUpon>201707040235378_MigrationTwo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707041226345_MigrationThree.resx">
-      <DependentUpon>201707041226345_MigrationThree.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
