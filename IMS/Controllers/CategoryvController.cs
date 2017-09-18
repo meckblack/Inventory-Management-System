@@ -11,7 +11,7 @@ using IMS.Data.DbConnections.DAL;
 
 namespace IMS.Controllers
 {
-    public class CategoryController : Controller
+    public class CategoryvController : Controller
     {
         private IMS_DB db = new IMS_DB();
 
@@ -21,42 +21,26 @@ namespace IMS.Controllers
             return View(db.Category.ToList());
         }
 
-        // GET: /Category/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Category category = db.Category.Find(id);
-            if (category == null)
-            {
-                return HttpNotFound();
-            }
-            return View(category);
-        }
-
         // GET: /Category/Create
         public ActionResult Create()
         {
-            return View();
+            var category = new Category();
+            return PartialView("", category);
         }
 
         // POST: /Category/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="CategoryId,CategoryName")] Category category)
+        public ActionResult Create(Category category)
         {
             if (ModelState.IsValid)
             {
                 db.Category.Add(category);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return Json(new { success = true });
             }
 
-            return View(category);
+            return PartialView("Create", category);
         }
 
         // GET: /Category/Edit/5
@@ -71,12 +55,10 @@ namespace IMS.Controllers
             {
                 return HttpNotFound();
             }
-            return View(category);
+            return PartialView("Edit", category);
         }
 
         // POST: /Category/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include="CategoryId,CategoryName")] Category category)
@@ -85,9 +67,9 @@ namespace IMS.Controllers
             {
                 db.Entry(category).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return Json(new { success = true });
             }
-            return View(category);
+            return PartialView("Edit", category);
         }
 
         // GET: /Category/Delete/5
@@ -102,7 +84,7 @@ namespace IMS.Controllers
             {
                 return HttpNotFound();
             }
-            return View(category);
+            return PartialView("Delete", category);
         }
 
         // POST: /Category/Delete/5
@@ -113,7 +95,7 @@ namespace IMS.Controllers
             Category category = db.Category.Find(id);
             db.Category.Remove(category);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return Json(new { success = true });
         }
 
         protected override void Dispose(bool disposing)
